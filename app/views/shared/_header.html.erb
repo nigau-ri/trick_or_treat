@@ -4,7 +4,11 @@
     <%= link_to image_tag("header-logo.png", class:"header-icon"), "/" %>
     <ul class='lists-right'>
       <% if user_signed_in? %>
-        <li><%= link_to current_user.nickname, user_path(current_user), class: "user-nickname" %></li> 
+        <% if current_user.nickname == "" %>
+          <li><%= link_to "マイページ", user_path(current_user), class: "user-nickname" %></li> 
+        <% else %>
+          <li><%= link_to current_user.nickname, user_path(current_user), class: "user-nickname" %></li> 
+        <% end %>
         <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "logout" %></li> 
       <% else %>
         <li><%= link_to 'ログイン', new_user_session_path, class: "login" %></li>

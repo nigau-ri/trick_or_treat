@@ -1,0 +1,15 @@
+<%= render "shared/second-header"%>
+
+<div class='account-page' id='account-page'>
+  <div class='account-page__inner clearfix'>
+    <div class='account-page__inner--left account-page__header'>
+      <h2>Details Edit</h2>
+      <h5>詳細情報の編集</h5>
+      <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'btn'%>
+      <%= link_to "マイページに戻る", user_path(current_user), class: 'btn'%>
+    </div>
+    <%= render "form"%>
+  </div>
+</div>
+
+<%= render "shared/second-footer"%>
