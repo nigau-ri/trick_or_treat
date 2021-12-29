@@ -2,5 +2,6 @@
 
 <div><%= current_user.nickname %>さんのページ</div>
 <%= link_to "登録情報を編集する", edit_user_path(current_user) %>
+<%= link_to "詳細情報を登録する", new_user_user_detail_path(current_user) %>
 
 <%= render "shared/footer" %>
