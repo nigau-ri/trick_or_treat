@@ -18,18 +18,18 @@
         </div>
         <div class='field'>
           <div class='field-label'>
-            <%= f.label :gender%>
+            <%= f.label :gender_id%>
           </div>
           <div class='field-input'>
-            <%= f.email_field :gender%>
+            <%= f.collection_select(:gender_id, Gender.all, :id, :name, {include_blank: '---'})%>
           </div>
         </div>
         <div class='field'>
           <div class='field-label'>
-            <%= f.label :prefecture%>
+            <%= f.label :prefecture_id%>
           </div>
           <div class='field-input'>
-            <%= f.email_field :prefecture%>
+            <%= f.collection_select(:prefecture_id, Prefecture.all, :id, :name, {include_blank: '---'})%>
           </div>
         </div>
         <div class='field'>
