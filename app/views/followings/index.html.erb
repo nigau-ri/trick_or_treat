@@ -1,0 +1,21 @@
+<%= render "shared/header" %>
+
+<div class="users-list-header">
+  <h2>フォロー中のユーザー</h2>
+  <form>
+    <input type="checkbox" id="remove-follow">
+    <label for="remove-follow">フォローをはずす</label>
+  </form>
+</div>
+
+<ul class="users-list">
+  <% current_user.followings.each do |following| %>
+    <% user = User.find(following.following_id) %>
+    <li class="user-list-item"> 
+      <%= user.nickname %>
+      <%= link_to 'followをはずす', following_path(user), method: :delete, class: 'hidden', id: 'followed-button' %>
+    </li>
+  <% end %>
+</ul>
+
+<%= render "shared/footer" %>
