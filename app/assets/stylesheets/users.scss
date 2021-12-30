@@ -5,6 +5,12 @@
 .users-list-header {
   font-size: 25px;
   margin-left: 35px;
+  #remove-follow{
+    margin-left: 15px;
+  }
+  label {
+    font-size: 12px;
+  }
 }
 
 .users-list {
@@ -28,5 +34,19 @@
     background-color: rgb(223, 110, 217);
     padding: 0 10px;
     border-radius: 10px;
+    width: 90px;
+    text-align: center;
+  }
+  .already-follow-button {
+    position: absolute;
+    display: inline-block;
+    right: 12%;
+    text-decoration: none;
+    color: white;
+    background-color: rgb(121, 122, 115);
+    padding: 0 10px;
+    border-radius: 10px;
+    width: 90px;
+    text-align: center;
   }
 }

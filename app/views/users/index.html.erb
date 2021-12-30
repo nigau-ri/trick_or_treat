@@ -1,10 +1,15 @@
 <%= render "shared/header" %>
+
 <h2 class="users-list-header">ユーザー一覧</h2>
 <ul class="users-list">
   <% @users.each do |user| %>
     <li class="user-list-item"> 
       <%= user.nickname %>
-      <%= link_to 'follow', followings_path(following_user: user.id), method: :post, class: 'follow-button' %>
+      <% if current_user.followings.exists?(following_id: user.id) %>
+        <%= link_to 'follow 済', following_path(user), method: :delete, class: 'already-follow-button' %>
+      <% else %>
+        <%= link_to 'follow', followings_path(following_user: user.id), method: :post, class: 'follow-button' %>
+      <% end %>
     </li>
   <% end %>
 </ul>
