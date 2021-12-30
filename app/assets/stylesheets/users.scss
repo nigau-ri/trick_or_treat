@@ -1,3 +1,32 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.users-list-header {
+  font-size: 25px;
+  margin-left: 35px;
+}
+
+.users-list {
+  margin: 20px 50px;
+  background-color: rgb(245, 234, 221);
+  width: 300px;
+  padding: 10px 0;
+  position: relative;
+  .user-list-item {
+    margin: 15px 20px;
+    padding: 10px;
+    background-color: rgb(241, 207, 165);
+    border-radius: 5px;
+  }
+  .follow-button {
+    position: absolute;
+    display: inline-block;
+    right: 12%;
+    text-decoration: none;
+    color: white;
+    background-color: rgb(223, 110, 217);
+    padding: 0 10px;
+    border-radius: 10px;
+  }
+}
