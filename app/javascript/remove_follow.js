@@ -1,13 +1,19 @@
 function appearButton() {
   const removeCheckbox = document.getElementById('remove-follow');
-  const followedButton = document.getElementById('followed-button');
+  const followedButton = document.querySelectorAll('.followed-button');
   if(!removeCheckbox) return null;
 
   function buttonStatus() {
     if (removeCheckbox.checked) {
-      followedButton.removeAttribute('class');
+      for(let i = 0; i < followedButton.length; i++){
+        let element = followedButton[i];
+        element.classList.remove('hidden');
+      }
     } else {
-      followedButton.setAttribute('class', 'hidden');
+      for(let i = 0; i < followedButton.length; i++){
+        let element = followedButton[i];
+        element.classList.add('hidden');
+      }
     }
   }
 

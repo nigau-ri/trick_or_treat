@@ -3,6 +3,12 @@ class FollowingsController < ApplicationController
   def index
   end
 
+  def show
+    @following = Following.find(params[:id])
+    @following_user = User.find(@following.following_id)
+    @following_tag = FollowingTag.new
+  end
+
   def create
     following = Following.new(following_id: params[:following_user], user_id: current_user.id)
     if following.save

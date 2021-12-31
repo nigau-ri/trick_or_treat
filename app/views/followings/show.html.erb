@@ -1,0 +1,26 @@
+<%= render "shared/header" %>
+
+<div class="users-list-header">
+  <h2><%= @following_user.nickname %>さんにタグをつける</h2>
+</div>
+
+<%= form_with(model: [@following, @following_tag], local: true, class: 'create-following-tag-form') do |f| %>
+  <%= render 'shared/error_messages', model: f.object %>
+  <%= f.label :name, 'タグをつける' %><br>
+  <%= f.text_field :name %>
+  <%= f.submit '追加'%>
+<% end %>
+
+<ul class="following-users-list">
+  <li class="following-user-list-item"> 
+    <%= @following_user.nickname %>
+    <div class="added-following-tag">
+      <% @following.following_tags_intermediates.each do |item| %>
+        <div class="following-tag-item"># <%= item.following_tag.name %></div>
+      <% end %>
+    </div>
+  </li>
+</ul>
+
+
+<%= render "shared/footer" %>

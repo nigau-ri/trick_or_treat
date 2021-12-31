@@ -2,9 +2,9 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-#followed-button {
+.followed-button {
   position: absolute;
-  right: 12%;
+  right: 64%;
   text-decoration: none;
   color: white;
   background-color: rgb(121, 122, 115);
@@ -16,4 +16,39 @@
 
 .hidden {
   display: none;
+}
+
+.following-users-list {
+  margin: 20px 50px;
+  background-color: rgb(245, 234, 221);
+  width: 750px;
+  padding: 10px 0;
+  position: relative;
+  .following-user-list-item {
+    margin: 15px 20px;
+    padding: 10px;
+    background-color: rgb(241, 207, 165);
+    border-radius: 5px;
+    .added-following-tag {
+      display: inline-block;
+      position: absolute;
+      left: 38%;
+      .following-tag-item {
+        background-color: yellowgreen;
+        border-radius: 6px;
+        padding: 3px 6px;
+        font-size: 12px;
+        display: inline-block;
+        margin-right: 3px;
+      }
+    }
+  }
+}
+
+.create-following-tag-form {
+  margin: 15px 70px;
+}
+
+.field_with_errors {
+  display: contents;
 }
