@@ -8,10 +8,10 @@
   </form>
 </div>
 
-<ul class="users-list">
+<ul class="following-users-list">
   <% current_user.followings.each do |following| %>
     <% user = User.find(following.following_id) %>
-    <li class="user-list-item"> 
+    <li class="following-user-list-item"> 
       <%= user.nickname %>
       <%= link_to 'followをはずす', following_path(user), method: :delete, class: 'hidden', id: 'followed-button' %>
     </li>

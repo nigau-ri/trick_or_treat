@@ -4,7 +4,7 @@
 
 #followed-button {
   position: absolute;
-  right: 12%;
+  right: 64%;
   text-decoration: none;
   color: white;
   background-color: rgb(121, 122, 115);
@@ -16,4 +16,19 @@
 
 .hidden {
   display: none;
+}
+
+
+.following-users-list {
+  margin: 20px 50px;
+  background-color: rgb(245, 234, 221);
+  width: 750px;
+  padding: 10px 0;
+  position: relative;
+  .following-user-list-item {
+    margin: 15px 20px;
+    padding: 10px;
+    background-color: rgb(241, 207, 165);
+    border-radius: 5px;
+  }
 }
