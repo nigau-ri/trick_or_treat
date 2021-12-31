@@ -1,0 +1,2 @@
+class FollowingTagsIntermediate < ApplicationRecord
+end

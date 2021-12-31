@@ -10,7 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_30_015511) do
+ActiveRecord::Schema.define(version: 2021_12_31_013122) do
+
+  create_table "following_tags", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["name"], name: "index_following_tags_on_name", unique: true
+  end
+
+  create_table "following_tags_intermediates", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "following_id", null: false
+    t.bigint "following_tag_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["following_id"], name: "index_following_tags_intermediates_on_following_id"
+    t.index ["following_tag_id"], name: "index_following_tags_intermediates_on_following_tag_id"
+  end
 
   create_table "followings", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "following_id", null: false
@@ -45,6 +61,8 @@ ActiveRecord::Schema.define(version: 2021_12_30_015511) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "following_tags_intermediates", "following_tags"
+  add_foreign_key "following_tags_intermediates", "followings"
   add_foreign_key "followings", "users"
   add_foreign_key "user_details", "users"
 end
