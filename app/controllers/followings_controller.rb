@@ -1,6 +1,9 @@
 class FollowingsController < ApplicationController
 
   def index
+    @q = FollowingTag.ransack(params[:q])
+    @following_tags = @q.result
+    @following = @following_tags
   end
 
   def show
