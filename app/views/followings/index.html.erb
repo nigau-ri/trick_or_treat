@@ -12,7 +12,7 @@
   <% current_user.followings.each do |following| %>
     <% user = User.find(following.following_id) %>
     <li class="following-user-list-item"> 
-      <%= user.nickname %>
+      <%= link_to user.nickname, following_path(following) %>
       <%= link_to 'followをはずす', following_path(user), method: :delete, class: 'hidden', id: 'followed-button' %>
     </li>
   <% end %>
