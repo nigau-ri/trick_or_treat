@@ -4,9 +4,10 @@
 
 .top-page-header {
   width: 100vw;
-  padding: 2vh 15vw;
+  padding: 2vh 0;
   display: flex;
   flex-direction: column;
+  background-color: rgb(169, 241, 217);
 }
 
 .top-page-header-contents {
@@ -17,7 +18,7 @@
 
 .header-icon {
   width: 10vw;
-  margin-right: 10vw;
+  margin-left: 15vw;
 }
 
 .nav {
@@ -25,8 +26,8 @@
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  width: 100%;
-  padding: 1vh 0;
+  padding: 1vh 15vw;
+  background-color: aquamarine;
 }
 
 .lists-left {
