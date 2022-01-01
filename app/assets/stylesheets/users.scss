@@ -50,3 +50,23 @@
     text-align: center;
   }
 }
+
+
+.having-event-wrapper {
+  margin: 30px 5vw;
+  background-color: rgb(241, 225, 225);
+  width: 90vw;
+  padding: 20px;
+  .event-items-list {
+    margin: 10px;
+    display: flex;
+    li {
+      padding: 10px;
+      background-color: rgb(233, 156, 241);
+      border-radius: 5px;
+      margin: 10px;
+      display: flex;
+      flex-direction: column;
+    }
+  }
+}

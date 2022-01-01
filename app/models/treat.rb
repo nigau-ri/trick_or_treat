@@ -1,7 +1,7 @@
 class Treat < ActiveHash::Base
   self.data = [
-    { id: 1, name: 'trick' },
-    { id: 2, name: 'treat' }
+    { id: 1, name: 'Trick' },
+    { id: 2, name: 'Treat' }
   ]
 
   include ActiveHash::Associations

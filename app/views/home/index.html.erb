@@ -1,3 +1,6 @@
 <%= render "shared/header" %>
-
+<div class="create-room-wrapper">
+  <%= link_to 'イベントの作成', new_room_path %>
+</div>
+<%= render partial: 'room_index', locals: {rooms: @rooms} %>
 <%= render "shared/footer" %>
