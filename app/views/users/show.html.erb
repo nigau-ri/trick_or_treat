@@ -19,17 +19,6 @@
 <% end %>
 
 
-<div class="having-event-wrapper">
-  <p>主催するイベント</p>
-  <div class="event-items-wrapper">
-    <ul class="event-items-list">
-      <% @user.user_room_intermediates.each do |item| %>
-        <li>
-          <%= item.room.name %>
-        </li>
-      <% end %>
-    </ul>
-  </div>
-</div>
+<%= render partial: 'home/room_index', locals: {rooms: @user.rooms } %>
 
 <%= render "shared/footer" %>

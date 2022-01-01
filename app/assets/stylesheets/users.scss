@@ -65,6 +65,8 @@
       background-color: rgb(233, 156, 241);
       border-radius: 5px;
       margin: 10px;
+      display: flex;
+      flex-direction: column;
     }
   }
 }

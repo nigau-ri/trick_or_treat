@@ -3,6 +3,7 @@ class RoomsController < ApplicationController
   end
 
   def show
+    @room = Room.find(params[:id])
   end
 
   def new
@@ -12,19 +13,23 @@ class RoomsController < ApplicationController
   def create
     room = Room.create(room_params)
     UserRoomIntermediate.create(user_id: current_user.id, room_id: room.id)
-    redirect_to home_show_path
+    redirect_to user_path(current_user)
   end
 
   def edit
-    
-  end
+    @room = Room.find(params[:id])
+  end 
 
   def update
-    
+    room = Room.find(params[:id])
+    room.update(room_params)
+    redirect_to user_path(current_user)
   end
 
   def destroy
-    
+    room = Room.find(params[:id])
+    room.destroy
+    redirect_to user_path(current_user)
   end
 
   private

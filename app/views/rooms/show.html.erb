@@ -1,2 +1,19 @@
-<h1>Rooms#show</h1>
-<p>Find me in app/views/rooms/show.html.erb</p>
+<%= render "shared/header" %>
+<h1>イベント名　<%= @room.name %></h1>
+<ul>
+  <li>開催場所：<%= @room.room_detail&.place %></li>
+  <li>開催日　：<%= @room.room_detail&.date %></li>
+  <li>人数　　：<%= @room.room_detail&.number_of_people %>人 - <%= @room.room_detail&.number_of_people %>人</li>
+  <li>雰囲気　：<%= @room.room_detail&.atmosphere %></li>
+  <li>Trick or Treat：<%= @room.room_detail&.treat&.name %></li>
+</ul>
+
+
+  <%= link_to "ルーム名を編集する・ルームを削除する", edit_room_path(@room) %><br>
+  <% if @room.room_detail.present? %>
+    <%= link_to "詳細情報を編集する", edit_room_room_detail_path(@room, @room.room_detail) %>
+  <% else %>
+    <%= link_to "詳細情報を登録する", new_room_room_detail_path(@room) %>
+  <% end %>
+
+<%= render "shared/footer" %>
