@@ -11,9 +11,9 @@
     <ul class='lists-right'>
       <% if user_signed_in? %>
         <% if current_user.nickname == "" %>
-          <li><%= link_to "マイページ", user_path(current_user), class: "user-nickname" %></li> 
+          <li><%= link_to "マイページ", home_show_path, class: "user-nickname" %></li> 
         <% else %>
-          <li><%= link_to current_user.nickname, user_path(current_user), class: "user-nickname" %></li> 
+          <li><%= link_to current_user.nickname, home_show_path, class: "user-nickname" %></li> 
         <% end %>
         <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "logout" %></li> 
       <% else %>
