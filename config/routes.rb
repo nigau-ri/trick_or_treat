@@ -8,4 +8,5 @@ Rails.application.routes.draw do
   resources :followings, only: [:index, :show, :create, :destroy] do
     resources :following_tags, only: [:index, :create]
   end
+  resources :rooms
 end

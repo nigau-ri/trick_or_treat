@@ -6,4 +6,6 @@ class User < ApplicationRecord
 
   has_one :user_detail, dependent: :destroy
   has_many :followings, dependent: :destroy
+  has_many :rooms, through: :user_room_intermediates
+  has_many :user_room_intermediates
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_31_013122) do
+ActiveRecord::Schema.define(version: 2022_01_01_065232) do
 
   create_table "following_tags", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -36,6 +36,12 @@ ActiveRecord::Schema.define(version: 2021_12_31_013122) do
     t.index ["user_id"], name: "index_followings_on_user_id"
   end
 
+  create_table "rooms", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "user_details", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "age"
     t.integer "gender_id", null: false
@@ -46,6 +52,15 @@ ActiveRecord::Schema.define(version: 2021_12_31_013122) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_user_details_on_user_id"
+  end
+
+  create_table "user_room_intermediates", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "room_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["room_id"], name: "index_user_room_intermediates_on_room_id"
+    t.index ["user_id"], name: "index_user_room_intermediates_on_user_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -65,4 +80,6 @@ ActiveRecord::Schema.define(version: 2021_12_31_013122) do
   add_foreign_key "following_tags_intermediates", "followings"
   add_foreign_key "followings", "users"
   add_foreign_key "user_details", "users"
+  add_foreign_key "user_room_intermediates", "rooms"
+  add_foreign_key "user_room_intermediates", "users"
 end
