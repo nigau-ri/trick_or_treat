@@ -9,11 +9,30 @@
 </ul>
 
 
-  <%= link_to "ルーム名を編集する・ルームを削除する", edit_room_path(@room) %><br>
-  <% if @room.room_detail.present? %>
-    <%= link_to "詳細情報を編集する", edit_room_room_detail_path(@room, @room.room_detail) %>
-  <% else %>
-    <%= link_to "詳細情報を登録する", new_room_room_detail_path(@room) %>
+<%= link_to "ルーム名を編集する・ルームを削除する", edit_room_path(@room) %><br>
+<% if @room.room_detail.present? %>
+  <%= link_to "詳細情報を編集する", edit_room_room_detail_path(@room, @room.room_detail) %>
+<% else %>
+  <%= link_to "詳細情報を登録する", new_room_room_detail_path(@room) %>
+<% end %>
+
+<div class="room-message-wrapper">
+  <h2>☆message☆</h2>
+  <div class="room-message-list">
+    <ul>
+      <% @messages.each do |message| %>
+        <li>
+          <p><%= message.user.nickname %>:</p>
+          <div><%= message.text %></div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+  <%= form_with(model:[@room, @message], local: true, class: 'room-message-form') do |f| %>
+    <%= f.text_field :text %>
+    <%= f.submit 'コメントする' %>
   <% end %>
+</div>
+
 
 <%= render "shared/footer" %>
