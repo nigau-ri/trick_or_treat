@@ -9,7 +9,9 @@ class MessagesController < ApplicationController
   end
 
   def destroy
-    
+    message = Message.find(params[:id])
+    message.destroy
+    redirect_to room_path(params[:room_id])
   end
 
   private

@@ -17,6 +17,11 @@
         margin-left: 5px;
         padding-left: 5px;
         border-radius: 3px;
+        position: relative;
+        a {
+          position: absolute;
+          right: 5%;
+        }
       }
     }
     

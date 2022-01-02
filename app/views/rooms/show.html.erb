@@ -23,7 +23,7 @@
       <% @messages.each do |message| %>
         <li>
           <p><%= message.user.nickname %>:</p>
-          <div><%= message.text %></div>
+          <div><%= message.text %><%= link_to '削除', room_message_path(@room, message), method: :delete %></div>
         </li>
       <% end %>
     </ul>
