@@ -9,5 +9,6 @@ Rails.application.routes.draw do
   end
   resources :rooms do
     resources :room_details, only: [:new, :create, :edit, :update]
+    resources :messages, only: [:create, :destroy]
   end
 end
