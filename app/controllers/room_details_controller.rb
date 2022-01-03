@@ -1,4 +1,6 @@
 class RoomDetailsController < ApplicationController
+  before_action :authenticate_user!
+  
   def new
     @room_detail = RoomDetail.new
     @room = Room.find(params[:room_id])

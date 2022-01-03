@@ -1,4 +1,6 @@
 class UserDetailsController < ApplicationController
+  before_action :authenticate_user!
+  
   def new
     @user_detail = UserDetail.new
   end

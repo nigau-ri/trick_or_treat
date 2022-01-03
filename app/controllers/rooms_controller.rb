@@ -1,6 +1,5 @@
 class RoomsController < ApplicationController
-  def index
-  end
+  before_action :authenticate_user!, except: [:show]
 
   def show
     @room = Room.find(params[:id])

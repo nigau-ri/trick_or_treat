@@ -1,4 +1,6 @@
 class FollowingsController < ApplicationController
+  before_action :authenticate_user!
+
 
   def index
     @q = FollowingTag.ransack(params[:q])
