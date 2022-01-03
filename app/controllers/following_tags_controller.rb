@@ -1,5 +1,7 @@
 class FollowingTagsController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_following
+  before_action ->{ensure_correct_user(following.user)}
 
   def create
     @following_tag = FollowingTag.where(name: tag_params[:name]).first_or_initialize
@@ -16,5 +18,9 @@ class FollowingTagsController < ApplicationController
   private
   def tag_params
     params.require(:following_tag).permit(:name)
+  end
+
+  def set_following
+    following = Following.find(params[:following_id])
   end
 end
