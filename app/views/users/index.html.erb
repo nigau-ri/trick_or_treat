@@ -6,8 +6,8 @@
     <li class="user-list-item"> 
       <%= link_to user.nickname, user_path(user) %>
       <% if user_signed_in? %>
-        <% if current_user.followings.exists?(following_id: user.id) %>
-          <%= link_to 'follow 済', following_path(user), method: :delete, class: 'already-follow-button' %>
+        <% if following = Following.find_by(following_id: user.id, user_id: current_user.id) %>
+          <%= link_to 'follow 済', following_path(following), method: :delete, class: 'already-follow-button' %>
         <% else %>
           <%= link_to 'follow', followings_path(following_user: user.id), method: :post, class: 'follow-button' %>
         <% end %>

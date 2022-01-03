@@ -6,7 +6,7 @@
     <input type="checkbox" id="remove-follow">
     <label for="remove-follow">フォローをはずす</label>
   </form>
-  <%= search_form_for @q, url: following_following_tags_path(current_user.followings.first), id: 'following-user-search-form' do |f| %>
+  <%= search_form_for @q, url: search_followings_path, id: 'following-user-search-form' do |f| %>
     <%= f.label :name, 'タグで絞り込む' %><br>
     <%= f.collection_select(:name, FollowingTag.all, :id, :name, {include_blank: '---'}) %>
   <% end %>
@@ -17,10 +17,10 @@
     <% user = User.find(following.following_id) %>
     <li class="following-user-list-item"> 
       <%= link_to user.nickname, following_path(following) %>
-      <%= link_to 'followをはずす', following_path(user), method: :delete, class: 'followed-button hidden' %>
+      <%= link_to 'followをはずす', following_path(following), method: :delete, class: 'followed-button hidden' %>
       <div class="added-following-tag">
-        <% following.following_tags_intermediates.each do |item| %>
-          <div class="following-tag-item"># <%= item.following_tag.name %></div>
+        <% following.following_tags.each do |tag| %>
+          <div class="following-tag-item"># <%= tag.name %></div>
         <% end %>
       </div>
     </li>

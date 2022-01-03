@@ -23,8 +23,14 @@ class FollowingsController < ApplicationController
   end
 
   def destroy
-    following = Following.find_by(following_id: params[:id], user_id: current_user.id)
+    following = Following.find(params[:id])
     following.destroy
     redirect_to users_path
+  end
+
+  def search
+    @q = FollowingTag.ransack(params[:q])
+    @following_tag = FollowingTag.find(params[:q][:name])
+    @followings = @following_tag.followings
   end
 end
