@@ -9,6 +9,10 @@ class ApplicationController < ActionController::Base
     root_path
   end
 
+  def ensure_correct_user(user)
+    redirect_to root_path unless current_user == user
+  end
+
   private
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:nickname])
