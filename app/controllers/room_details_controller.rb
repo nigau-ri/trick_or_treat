@@ -33,8 +33,4 @@ class RoomDetailsController < ApplicationController
   def room_detail_params
     params.require(:room_detail).permit(:place, :date, :number_of_people, :treat_id, :atmosphere).merge(room_id: params[:room_id])
   end
-
-  def set_room
-    @room = Room.find(params[:room_id])
-  end
 end

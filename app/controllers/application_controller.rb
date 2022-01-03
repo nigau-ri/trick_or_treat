@@ -17,6 +17,10 @@ class ApplicationController < ActionController::Base
     redirect_to root_path unless @room.users.include?(current_user)
   end
 
+  def set_room
+    @room = Room.find(params[:room_id])
+  end
+
   private
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:nickname])
