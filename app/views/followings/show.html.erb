@@ -15,8 +15,8 @@
   <li class="following-user-list-item"> 
     <%= @following_user.nickname %>
     <div class="added-following-tag">
-      <% @following.following_tags_intermediates.each do |item| %>
-        <div class="following-tag-item"># <%= item.following_tag.name %></div>
+      <% @following.following_tags.each do |tag| %>
+        <div class="following-tag-item"># <%= tag.name %></div>
       <% end %>
     </div>
   </li>

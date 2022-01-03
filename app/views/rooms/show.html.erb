@@ -8,12 +8,13 @@
   <li>Trick or Treat：<%= @room.room_detail&.treat&.name %></li>
 </ul>
 
-
-<%= link_to "ルーム名を編集する・ルームを削除する", edit_room_path(@room) %><br>
-<% if @room.room_detail.present? %>
-  <%= link_to "詳細情報を編集する", edit_room_room_detail_path(@room, @room.room_detail) %>
-<% else %>
-  <%= link_to "詳細情報を登録する", new_room_room_detail_path(@room) %>
+<% if @room.users.include?(current_user) %>
+  <%= link_to "ルーム名を編集する・ルームを削除する", edit_room_path(@room) %><br>
+  <% if @room.room_detail.present? %>
+    <%= link_to "詳細情報を編集する", edit_room_room_detail_path(@room, @room.room_detail) %>
+  <% else %>
+    <%= link_to "詳細情報を登録する", new_room_room_detail_path(@room) %>
+  <% end %>
 <% end %>
 
 <div class="room-message-wrapper">
@@ -23,14 +24,21 @@
       <% @messages.each do |message| %>
         <li>
           <p><%= message.user.nickname %>:</p>
-          <div><%= message.text %><%= link_to '削除', room_message_path(@room, message), method: :delete %></div>
+          <div>
+            <%= message.text %>
+            <% if @room.users.include?(current_user) %>
+              <%= link_to '削除', room_message_path(@room, message), method: :delete %>
+            <% end %>
+          </div>
         </li>
       <% end %>
     </ul>
   </div>
-  <%= form_with(model:[@room, @message], local: true, class: 'room-message-form') do |f| %>
-    <%= f.text_field :text %>
-    <%= f.submit 'コメントする' %>
+  <% if @room.users.include?(current_user) %>
+    <%= form_with(model:[@room, @message], local: true, class: 'room-message-form') do |f| %>
+      <%= f.text_field :text %>
+      <%= f.submit 'コメントする' %>
+    <% end %>
   <% end %>
 </div>
 

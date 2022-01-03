@@ -1,6 +1,7 @@
 class RoomsController < ApplicationController
-  def index
-  end
+  before_action :authenticate_user!, except: [:show]
+  before_action :set_room, only: [:edit, :update, :destroy]
+  before_action :user_of_thie_room?, only: [:edit, :update, :destroy]
 
   def show
     @room = Room.find(params[:id])
@@ -19,23 +20,24 @@ class RoomsController < ApplicationController
   end
 
   def edit
-    @room = Room.find(params[:id])
   end 
 
   def update
-    room = Room.find(params[:id])
-    room.update(room_params)
+    @room.update(room_params)
     redirect_to user_path(current_user)
   end
 
   def destroy
-    room = Room.find(params[:id])
-    room.destroy
+    @room.destroy
     redirect_to user_path(current_user)
   end
 
   private
   def room_params
     params.require(:room).permit(:name)
+  end
+
+  def set_room
+    @room = Room.find(params[:id])
   end
 end

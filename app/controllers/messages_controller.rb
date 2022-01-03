@@ -1,4 +1,8 @@
 class MessagesController < ApplicationController
+  before_action :authenticate_user!
+  before_action :set_room
+  before_action :user_of_thie_room?
+
   def create
     @message = Message.new(message_params)
     if @message.save

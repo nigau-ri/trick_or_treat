@@ -1,4 +1,7 @@
 class FollowingsController < ApplicationController
+  before_action :authenticate_user!
+  before_action :set_following, only: [:show, :destroy]
+  before_action ->{ensure_correct_user(@following.user)}, only: [:show, :destroy]
 
   def index
     @q = FollowingTag.ransack(params[:q])
@@ -6,7 +9,6 @@ class FollowingsController < ApplicationController
   end
 
   def show
-    @following = Following.find(params[:id])
     @following_user = User.find(@following.following_id)
     @following_tag = FollowingTag.new
   end
@@ -21,8 +23,18 @@ class FollowingsController < ApplicationController
   end
 
   def destroy
-    following = Following.find_by(following_id: params[:id], user_id: current_user.id)
-    following.destroy
+    @following.destroy
     redirect_to users_path
+  end
+
+  def search
+    @q = FollowingTag.ransack(params[:q])
+    @following_tag = FollowingTag.find(params[:q][:name])
+    @followings = @following_tag.followings
+  end
+
+  private
+  def set_following
+    @following = Following.find(params[:id])
   end
 end
