@@ -30,3 +30,41 @@
     margin: 10px;
   }
 }
+
+.room-good-wrapper {
+  margin: 20px 5vw;
+  background-color: cadetblue;
+  color: aliceblue;
+  width: 60vw;
+  padding: 15px;
+  position: relative;
+  li {
+    margin: 7px;
+    a {
+      color: aliceblue;
+    }
+    .room-allow-button {
+      background-color: aliceblue;
+      color: cadetblue;
+      position: absolute;
+      right: 5%;
+      padding: 5px;
+    }
+  }
+  .good-delete-button {
+    color: aliceblue;
+    position: absolute;
+    right: 5%;
+  }
+}
+
+.room-good-form {
+  margin: 20px 5vw;
+  background-color: cadetblue;
+  color: aliceblue;
+  width: 60vw;
+  padding: 15px;
+  input {
+    margin: 7px;
+  }
+}

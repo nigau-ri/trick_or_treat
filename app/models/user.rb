@@ -9,4 +9,5 @@ class User < ApplicationRecord
   has_many :user_room_intermediates
   has_many :rooms, through: :user_room_intermediates
   has_many :messages
+  has_many :goods
 end

@@ -14,6 +14,7 @@ class MessagesController < ApplicationController
 
   def destroy
     message = Message.find(params[:id])
+    redirect_to root_path and return unless current_user == message.user
     message.destroy
     redirect_to room_path(params[:room_id])
   end
