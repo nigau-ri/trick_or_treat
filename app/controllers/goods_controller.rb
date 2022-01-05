@@ -2,7 +2,8 @@ class GoodsController < ApplicationController
   before_action :authenticate_user!
 
   def create
-    Good.create(good_params)
+    room = Room.find(params[:room_id])
+    Good.create(good_params) if room.matched == 'yet'
     redirect_to room_path(params[:room_id])
   end
 

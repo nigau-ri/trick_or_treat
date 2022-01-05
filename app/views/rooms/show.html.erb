@@ -33,18 +33,20 @@
   <% end %>
 <% end %>
 
-<% if user_signed_in? %>
-  <% unless @room.users.include?(current_user) %>
-    <% if good = Good.find_by(user_id: current_user.id, room_id: @room.id) %>
-      <div class="room-good-wrapper">
-        🌟　<%= good.text %>　：　<%= good.user.nickname %>
-        <%= link_to '削除', room_good_path(@room, good), method: :delete, class: 'good-delete-button' %>
-      </div>
-    <% else %>
-      <%= form_with(model:[@room, @good], local: true, class: "room-good-form") do |f| %>
-        <%= f.label :text, 'いいねする❕' %><br>
-        <%= f.text_field :text, placeholder: 'アピール' %>
-        <%= f.submit 'いいね！' %>
+<% if @room.matched == 'yet' %>
+  <% if user_signed_in? %>
+    <% unless @room.users.include?(current_user) %>
+      <% if good = Good.find_by(user_id: current_user.id, room_id: @room.id) %>
+        <div class="room-good-wrapper">
+          🌟　<%= good.text %>　：　<%= good.user.nickname %>
+          <%= link_to '削除', room_good_path(@room, good), method: :delete, class: 'good-delete-button' %>
+        </div>
+      <% else %>
+        <%= form_with(model:[@room, @good], local: true, class: "room-good-form") do |f| %>
+          <%= f.label :text, 'いいねする❕' %><br>
+          <%= f.text_field :text, placeholder: 'アピール' %>
+          <%= f.submit 'いいね！' %>
+        <% end %>
       <% end %>
     <% end %>
   <% end %>
