@@ -25,7 +25,10 @@
   <%= form_with(model:@user_room_intermediate, local: true, url: invite_room_path(@room)) do |f| %>
     <% following_users = [] %>
     <% current_user.followings.each do |following| %>
-      <% following_users << User.find(following.following_id) %>
+      <% add_user = User.find(following.following_id) %>
+      <% if current_user.user_detail.gender_id == add_user.user_detail.gender_id %>
+        <% following_users << add_user %>
+      <% end %>
     <% end %>
     <%= f.label :invited_user_id, 'メンバーを追加する' %><br>
     <%= f.collection_select :invited_user_id, following_users, :id, :nickname, {include_blank: '---'} %>
