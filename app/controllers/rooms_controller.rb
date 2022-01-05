@@ -1,7 +1,7 @@
 class RoomsController < ApplicationController
   before_action :authenticate_user!, except: [:show]
-  before_action :set_room, only: [:show, :edit, :update, :destroy, :allow]
-  before_action :user_of_this_room?, only: [:edit, :update, :destroy, :allow]
+  before_action :set_room, only: [:show, :edit, :update, :destroy, :allow, :invite]
+  before_action :user_of_this_room?, only: [:edit, :update, :destroy, :allow, :invite]
 
   def show
     @message = Message.new
@@ -9,6 +9,7 @@ class RoomsController < ApplicationController
     @good = Good.new
     @goods = @room.goods
     @user = User.find(@room.create_user_id)
+    @user_room_intermediate = UserRoomIntermediate.new
   end
 
   def new
@@ -36,6 +37,14 @@ class RoomsController < ApplicationController
 
   def allow
     UserRoomIntermediate.create(user_id: params[:allowed_user_id], room_id: @room.id)
+    redirect_to room_path(@room)
+  end
+
+  def invite
+    invited_user = User.find(params[:user_room_intermediate][:invited_user_id])
+    unless @room.users.include?(invited_user)
+      UserRoomIntermediate.create(user_id: params[:user_room_intermediate][:invited_user_id], room_id: @room.id)
+    end
     redirect_to room_path(@room)
   end
 

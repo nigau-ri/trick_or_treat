@@ -16,6 +16,7 @@ Rails.application.routes.draw do
     resources :goods, only: [:create, :destroy]
     member do
       get 'allow'
+      post 'invite'
     end
   end
 end

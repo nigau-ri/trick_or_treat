@@ -33,7 +33,7 @@
             <% if good.room.name.present? %>
               <div><%= link_to good.room.name, room_path(good.room) %></div>
             <% else %>
-              <div><%= link_to "#{good.room.room_detail&.date}＠#{good.room.room_detail&.place}", room_path(room) %></div>
+              <div><%= link_to "#{good.room.room_detail&.date}＠#{good.room.room_detail&.place}", room_path(good.room) %></div>
             <% end %>
             <div><%= good.room.room_detail&.place %></div>
             <div><%= good.room.room_detail&.date %></div>

@@ -22,6 +22,15 @@
   <% else %>
     <%= link_to "詳細情報を登録する", new_room_room_detail_path(@room) %>
   <% end %>
+  <%= form_with(model:@user_room_intermediate, local: true, url: invite_room_path(@room)) do |f| %>
+    <% following_users = [] %>
+    <% current_user.followings.each do |following| %>
+      <% following_users << User.find(following.following_id) %>
+    <% end %>
+    <%= f.label :invited_user_id, 'メンバーを追加する' %><br>
+    <%= f.collection_select :invited_user_id, following_users, :id, :nickname, {include_blank: '---'} %>
+    <%= f.submit '追加' %>
+  <% end %>
 <% end %>
 
 <% if user_signed_in? %>
