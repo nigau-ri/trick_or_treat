@@ -1,12 +1,13 @@
 class RoomsController < ApplicationController
   before_action :authenticate_user!, except: [:show]
-  before_action :set_room, only: [:edit, :update, :destroy]
+  before_action :set_room, only: [:show, :edit, :update, :destroy]
   before_action :user_of_thie_room?, only: [:edit, :update, :destroy]
 
   def show
-    @room = Room.find(params[:id])
     @message = Message.new
     @messages = @room.messages
+    @good = Good.new
+    @goods = @room.goods
   end
 
   def new
