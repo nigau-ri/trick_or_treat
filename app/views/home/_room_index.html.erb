@@ -1,17 +1,14 @@
-<div class="having-event-wrapper">
-  <p>イベント一覧</p>
-  <div class="event-items-wrapper">
-    <ul class="event-items-list">
-      <% rooms.each do |room| %>
-        <li>
-          <div><%= link_to room.name, room_path(room) %></div>
-          <div><%= room.room_detail&.place %></div>
-          <div><%= room.room_detail&.date %></div>
-          <div><%= room.room_detail&.number_of_people %>人 - <%= room.room_detail&.number_of_people %>人</div>
-          <div><%= room.room_detail&.atmosphere %></div>
-          <div><%= room.room_detail&.treat&.name %></div>
-        </li>
-      <% end %>
-    </ul>
-  </div>
+<div class="event-items-wrapper">
+  <ul class="event-items-list">
+    <% rooms.each do |room| %>
+      <li>
+        <div><%= link_to room.name, room_path(room) %></div>
+        <div><%= room.room_detail&.place %></div>
+        <div><%= room.room_detail&.date %></div>
+        <div><%= room.room_detail&.number_of_people %>人 - <%= room.room_detail&.number_of_people %>人</div>
+        <div><%= room.room_detail&.atmosphere %></div>
+        <div><%= room.room_detail&.treat&.name %></div>
+      </li>
+    <% end %>
+  </ul>
 </div>

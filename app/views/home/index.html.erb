@@ -4,5 +4,10 @@
     <%= link_to 'イベントの作成', new_room_path %>
   </div>
 <% end %>
-<%= render partial: 'room_index', locals: {rooms: @rooms} %>
+
+<div class="event-wrapper">
+  <p>イベント一覧</p>
+  <%= render partial: 'room_index', locals: {rooms: @rooms} %>
+</div>
+
 <%= render "shared/footer" %>
