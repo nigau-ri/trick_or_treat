@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
   def index
-    @rooms = Room.all
+    @rooms = Room.where(matched: 'yet')
   end
 end
