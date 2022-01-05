@@ -43,9 +43,11 @@ class RoomsController < ApplicationController
   end
 
   def invite
-    invited_user = User.find(params[:user_room_intermediate][:invited_user_id])
-    unless @room.users.include?(invited_user)
-      UserRoomIntermediate.create(user_id: params[:user_room_intermediate][:invited_user_id], room_id: @room.id)
+    if params[:user_room_intermediate][:invited_user_id].present?
+      invited_user = User.find(params[:user_room_intermediate][:invited_user_id])
+      unless @room.users.include?(invited_user)
+        UserRoomIntermediate.create(user_id: params[:user_room_intermediate][:invited_user_id], room_id: @room.id)
+      end
     end
     redirect_to room_path(@room)
   end
