@@ -2,7 +2,11 @@
   <ul class="event-items-list">
     <% rooms.each do |room| %>
       <li>
-        <div><%= link_to room.name, room_path(room) %></div>
+        <% if room.name.present? %>
+          <div><%= link_to room.name, room_path(room) %></div>
+        <% else %>
+          <div><%= link_to "#{room.room_detail&.date}＠#{room.room_detail&.place}", room_path(room) %></div>
+        <% end %>
         <div><%= room.room_detail&.place %></div>
         <div><%= room.room_detail&.date %></div>
         <div><%= room.room_detail&.number_of_people %>人 - <%= room.room_detail&.number_of_people %>人</div>

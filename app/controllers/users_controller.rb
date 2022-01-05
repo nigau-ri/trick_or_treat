@@ -12,6 +12,7 @@ class UsersController < ApplicationController
   end
   
   def show
+    @rooms = Room.where(create_user_id: current_user.id)
   end
 
   def edit

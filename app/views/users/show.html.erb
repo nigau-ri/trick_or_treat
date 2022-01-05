@@ -20,7 +20,7 @@
 
 <div class="event-wrapper">
   <p>主催するイベント</p>
-  <%= render partial: 'home/room_index', locals: {rooms: @user.rooms } %>
+  <%= render partial: 'home/room_index', locals: {rooms: @rooms } %>
 </div>
 
 <% if current_user&.id == @user.id %>
@@ -30,7 +30,11 @@
       <ul class="event-items-list">
         <% current_user.goods.each do |good| %>
           <li>
-            <div><%= link_to good.room.name, room_path(good.room) %></div>
+            <% if good.room.name.present? %>
+              <div><%= link_to good.room.name, room_path(good.room) %></div>
+            <% else %>
+              <div><%= link_to "#{good.room.room_detail&.date}＠#{good.room.room_detail&.place}", room_path(room) %></div>
+            <% end %>
             <div><%= good.room.room_detail&.place %></div>
             <div><%= good.room.room_detail&.date %></div>
             <div><%= good.room.room_detail&.number_of_people %>人 - <%= good.room.room_detail&.number_of_people %>人</div>

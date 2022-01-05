@@ -6,6 +6,13 @@
   <li>人数　　：<%= @room.room_detail&.number_of_people %>人 - <%= @room.room_detail&.number_of_people %>人</li>
   <li>雰囲気　：<%= @room.room_detail&.atmosphere %></li>
   <li>Trick or Treat：<%= @room.room_detail&.treat&.name %></li>
+  <li>主催者　：<%= link_to @user.nickname, user_path(@user) %></li>
+  <li>
+    メンバー：
+    <% @room.users.each do |user| %>
+      <%= link_to user.nickname, user_path(user) %>・
+    <% end %>
+  </li>
 </ul>
 
 <% if @room.users.include?(current_user) %>
@@ -59,7 +66,7 @@
   <% end %>
 </div>
 
-<% if @room.users.include?(current_user) %>
+<% if current_user.id == @room.create_user_id %>
   <div class="room-good-wrapper">
     <h2>もらった いいね❕</h2>
     <div class="room-good-list">
