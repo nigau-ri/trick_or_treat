@@ -8,6 +8,7 @@ class GoodsController < ApplicationController
 
   def destroy
     good = Good.find(params[:id])
+    redirect_to root_path and return unless current_user == good.user 
     good.destroy
     redirect_to room_path(params[:room_id])
   end
