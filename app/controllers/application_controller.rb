@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
     redirect_to root_path unless current_user == user
   end
 
-  def user_of_thie_room?
+  def user_of_this_room?
     redirect_to root_path unless @room.users.include?(current_user)
   end
 

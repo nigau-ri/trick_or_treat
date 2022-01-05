@@ -1,7 +1,7 @@
 class RoomDetailsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_room
-  before_action :user_of_thie_room?
+  before_action :user_of_this_room?
   
   def new
     @room_detail = RoomDetail.new

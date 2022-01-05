@@ -67,6 +67,7 @@
         <% @goods.each do |good| %>
           <li>
             🌟　<%= good.text %>　：　<%= link_to good.user.nickname, user_path(good.user) %>
+            <%= link_to 'allow', allow_room_path(@room, allowed_user_id: good.user.id), class: 'room-allow-button' %>
           </li>
         <% end %>
       </ul>
