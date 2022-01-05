@@ -8,6 +8,7 @@ class RoomsController < ApplicationController
     @messages = @room.messages
     @good = Good.new
     @goods = @room.goods
+    @user = User.find(@room.create_user_id)
   end
 
   def new
@@ -40,7 +41,7 @@ class RoomsController < ApplicationController
 
   private
   def room_params
-    params.require(:room).permit(:name)
+    params.require(:room).permit(:name).merge(create_user_id: current_user.id)
   end
 
   def set_room
