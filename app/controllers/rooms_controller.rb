@@ -37,6 +37,8 @@ class RoomsController < ApplicationController
 
   def allow
     UserRoomIntermediate.create(user_id: params[:allowed_user_id], room_id: @room.id)
+    @room.update(matched: 'done')
+    @room.goods.destroy_all
     redirect_to room_path(@room)
   end
 

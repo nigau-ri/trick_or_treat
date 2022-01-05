@@ -12,7 +12,7 @@ class UsersController < ApplicationController
   end
   
   def show
-    @rooms = Room.where(create_user_id: current_user.id)
+    @rooms = Room.where(create_user_id: current_user.id, matched: 'yet')
   end
 
   def edit
