@@ -106,8 +106,8 @@
                     <%= good.user.nickname %>さんの入室を許可しますか？<br>
                   </div>
                   <div class="allow-confirm-button">
-                    <div id="allow-room-yes-button"><%= link_to 'はい', allow_room_path(@room, allowed_user_id: good.user.id) %></div>
-                    <div id="allow-room-cancel-button">マッチングを中止する</div>
+                    <div id="allow-room-yes-button" class="btn"><%= link_to 'はい', allow_room_path(@room, allowed_user_id: good.user.id) %></div>
+                    <div id="allow-room-cancel-button" class="btn">マッチングを中止する</div>
                   </div>
                 </div>
               <% end %>
