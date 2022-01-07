@@ -1,7 +1,7 @@
 <%= render "shared/header" %>
 
 <div class="users-list-header">
-  <h2>フォロー中のユーザーを<%= @following_tag.name %>で絞り込む</h2>
+  <h4 class="mt-4">フォロー中のユーザーを”＃ <%= @following_tag.name %>”タグで絞り込む</h4>
   <form>
     <input type="checkbox" id="remove-follow">
     <label for="remove-follow">フォローをはずす</label>

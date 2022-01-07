@@ -1,7 +1,7 @@
 <%= render "shared/header" %>
 
 <div class="users-list-header">
-  <h2><%= @following_user.nickname %>さんにタグをつける</h2>
+  <h4 class="mt-4"><%= @following_user.nickname %>さんにタグをつける</h4>
 </div>
 
 <%= form_with(model: [@following, @following_tag], local: true, class: 'create-following-tag-form') do |f| %>
