@@ -1,40 +1,47 @@
 <%= render "shared/header" %>
-<h1>イベント名　<%= @room.name %></h1>
-<ul>
-  <li>開催場所：<%= @room.room_detail&.place %></li>
-  <li>開催日　：<%= @room.room_detail&.date %></li>
-  <li>人数　　：<%= @room.room_detail&.number_of_people %>人 - <%= @room.room_detail&.number_of_people %>人</li>
-  <li>雰囲気　：<%= @room.room_detail&.atmosphere %></li>
-  <li>Trick or Treat：<%= @room.room_detail&.treat&.name %></li>
-  <li>主催者　：<%= link_to @user.nickname, user_path(@user) %></li>
-  <li>
-    メンバー：
-    <% @room.users.each do |user| %>
-      <%= link_to user.nickname, user_path(user) %>・
-    <% end %>
-  </li>
-</ul>
-
-<% if @room.users.include?(current_user) %>
-  <%= link_to "ルーム名を編集する・ルームを削除する", edit_room_path(@room) %><br>
-  <% if @room.room_detail.present? %>
-    <%= link_to "詳細情報を編集する", edit_room_room_detail_path(@room, @room.room_detail) %>
+<div class="container">
+  <% if @room.name.present? %>
+    <h1 class="mt-2"><%= @room.name %></h1>
   <% else %>
-    <%= link_to "詳細情報を登録する", new_room_room_detail_path(@room) %>
+    <h1 class="mt-2"><%= "#{@room.room_detail&.date}＠#{@room.room_detail&.place}" %></h1>
   <% end %>
-  <%= form_with(model:@user_room_intermediate, local: true, url: invite_room_path(@room)) do |f| %>
-    <% following_users = [] %>
-    <% current_user.followings.each do |following| %>
-      <% add_user = User.find(following.following_id) %>
-      <% if current_user.user_detail.gender_id == add_user.user_detail.gender_id %>
-        <% following_users << add_user %>
+  <ul>
+    <li>開催場所：<%= @room.room_detail&.place %></li>
+    <li>開催日　：<%= @room.room_detail&.date %></li>
+    <li>人数　　：<%= @room.room_detail&.number_of_people %>人 - <%= @room.room_detail&.number_of_people %>人</li>
+    <li>雰囲気　：<%= @room.room_detail&.atmosphere %></li>
+    <li>Trick or Treat：<%= @room.room_detail&.treat&.name %></li>
+    <li>主催者　：<%= link_to @user.nickname, user_path(@user) %></li>
+    <li>
+      メンバー：
+      <% @room.users.each do |user| %>
+        <%= link_to user.nickname, user_path(user) %>・
       <% end %>
+    </li>
+  </ul>
+
+  <% if @room.users.include?(current_user) %>
+    <%= link_to "ルーム名を編集する・ルームを削除する", edit_room_path(@room) %><br>
+    <% if @room.room_detail.present? %>
+      <%= link_to "詳細情報を編集する", edit_room_room_detail_path(@room, @room.room_detail) %>
+    <% else %>
+      <%= link_to "詳細情報を登録する", new_room_room_detail_path(@room) %>
     <% end %>
-    <%= f.label :invited_user_id, 'メンバーを追加する' %><br>
-    <%= f.collection_select :invited_user_id, following_users, :id, :nickname, {include_blank: '---'} %>
-    <%= f.submit '追加' %>
+    <%= form_with(model:@user_room_intermediate, local: true, url: invite_room_path(@room)) do |f| %>
+      <% following_users = [] %>
+      <% current_user.followings.each do |following| %>
+        <% add_user = User.find(following.following_id) %>
+        <% if current_user.user_detail.gender_id == add_user.user_detail.gender_id %>
+          <% following_users << add_user %>
+        <% end %>
+      <% end %>
+      <%= f.label :invited_user_id, 'メンバーを追加する' %><br>
+      <%= f.collection_select :invited_user_id, following_users, :id, :nickname, {include_blank: '---'} %>
+      <%= f.submit '追加' %>
+    <% end %>
   <% end %>
-<% end %>
+</div>
+
 
 <% if @room.matched == 'yet' %>
   <% if user_signed_in? %>
@@ -56,7 +63,7 @@
 <% end %>
 
 <div class="room-message-wrapper">
-  <h2>☆message☆</h2>
+  <h5>☆message☆</h5>
   <div class="room-message-list">
     <ul>
       <% @messages.each do |message| %>
@@ -83,7 +90,7 @@
 <% if @room.matched == 'yet' %>
   <% if @room.users.include?(current_user) %>
     <div class="room-good-wrapper">
-      <h2>もらった いいね❕</h2>
+      <h5>もらった いいね❕</h5>
       <div class="room-good-list">
         <ul>
           <% @goods.each do |good| %>
