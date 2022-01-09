@@ -18,18 +18,19 @@
   <% end %>
 </div>
 
-<div class="event-wrapper">
-  <p>主催中のイベント</p>
+<div class="event-wrapper container my-5">
+  <h4>主催中のイベント</h4>
   <%= render partial: 'home/room_index', locals: {rooms: @rooms } %>
 </div>
 
 <% if current_user&.id == @user.id %>
-  <div class="event-wrapper">
-    <p>いいねしたイベント</p>
-    <div class="event-items-wrapper">
-      <ul class="event-items-list">
-        <% current_user.goods.each do |good| %>
-          <li>
+  <div class="event-wrapper container my-5">
+    <h4>いいねしたイベント</h4>
+    <ul class="event-items-list row">
+      <% current_user.goods.each do |good| %>
+        <% user = User.find(good.room.create_user_id) %>
+        <div class="col-3">
+          <li class='event-list-item<%= user.user_detail.gender_id %>'>
             <% if good.room.name.present? %>
               <div><%= link_to good.room.name, room_path(good.room) %></div>
             <% else %>
@@ -41,13 +42,13 @@
             <div><%= good.room.room_detail&.atmosphere %></div>
             <div><%= good.room.room_detail&.treat&.name %></div>
           </li>
-        <% end %>
-      </ul>
-    </div>
+        </div>
+      <% end %>
+    </ul>
   </div>
 
-  <div class="event-wrapper">
-    <p>参加中のイベント</p>
+  <div class="event-wrapper container my-5">
+    <h4>参加中のイベント</h4>
     <%= render partial: 'home/room_index', locals: {rooms: @user.rooms } %>
   </div>
 <% end %>

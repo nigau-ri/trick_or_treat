@@ -54,20 +54,22 @@
 
 
 .event-wrapper {
-  margin: 30px 5vw;
   background-color: rgb(241, 225, 225);
-  width: 90vw;
-  padding: 20px;
+  padding: 30px;
   .event-items-list {
-    margin: 10px;
-    display: flex;
+    margin-right: 2rem;
     li {
       padding: 10px;
-      background-color: rgb(233, 156, 241);
       border-radius: 5px;
       margin: 10px;
       display: flex;
       flex-direction: column;
+    }
+    .event-list-item1 {
+      background-color: rgb(156, 186, 241);
+    }
+    .event-list-item2 {
+      background-color: rgb(233, 156, 241);
     }
   }
 }

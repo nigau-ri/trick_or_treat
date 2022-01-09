@@ -1,7 +1,8 @@
-<div class="event-items-wrapper">
-  <ul class="event-items-list">
-    <% rooms.each do |room| %>
-      <li>
+<ul class="event-items-list row">
+  <% rooms.each do |room| %>
+    <% user = User.find(room.create_user_id) %>
+    <div class="col-3">
+      <li class='event-list-item<%= user.user_detail.gender_id %>'>
         <% if room.name.present? %>
           <div><%= link_to room.name, room_path(room) %></div>
         <% else %>
@@ -13,6 +14,6 @@
         <div><%= room.room_detail&.atmosphere %></div>
         <div><%= room.room_detail&.treat&.name %></div>
       </li>
-    <% end %>
-  </ul>
-</div>
+    </div>
+  <% end %>
+</ul>
