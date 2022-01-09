@@ -1,35 +1,36 @@
 <%= render "shared/header" %>
 
-<div><%= @user.nickname %>さんのページ</div>
-
-<ul>
-  <li>年齢　：<%= @user.user_detail&.age %></li>
-  <li>性別　：<%= @user.user_detail&.gender.name %></li>
-  <li>居住地：<%= @user.user_detail&.prefecture.name %> <%= @user.user_detail&.city %></li>
-  <li>趣味　：<%= @user.user_detail&.hobby %></li>
-</ul>
-
-<% if current_user&.id == @user.id %>
-  <%= link_to "登録情報を編集する", edit_user_path(current_user) %><br>
-  <% if current_user.user_detail.present? %>
-    <%= link_to "詳細情報を編集する", edit_user_user_detail_path(current_user, current_user.user_detail) %>
-  <% else %>
-    <%= link_to "詳細情報を登録する", new_user_user_detail_path(current_user) %>
+<div class="container">
+  <h4 class="mt-3"><%= @user.nickname %>さんのページ</h4>
+  <ul>
+    <li>年齢　：<%= @user.user_detail&.age %></li>
+    <li>性別　：<%= @user.user_detail&.gender.name %></li>
+    <li>居住地：<%= @user.user_detail&.prefecture.name %> <%= @user.user_detail&.city %></li>
+    <li>趣味　：<%= @user.user_detail&.hobby %></li>
+  </ul>
+  <% if current_user&.id == @user.id %>
+    <%= link_to "登録情報を編集する", edit_user_path(current_user) %><br>
+    <% if current_user.user_detail.present? %>
+      <%= link_to "詳細情報を編集する", edit_user_user_detail_path(current_user, current_user.user_detail) %>
+    <% else %>
+      <%= link_to "詳細情報を登録する", new_user_user_detail_path(current_user) %>
+    <% end %>
   <% end %>
-<% end %>
+</div>
 
-<div class="event-wrapper">
-  <p>主催中のイベント</p>
+<div class="event-wrapper container my-5">
+  <h4>主催中のイベント</h4>
   <%= render partial: 'home/room_index', locals: {rooms: @rooms } %>
 </div>
 
 <% if current_user&.id == @user.id %>
-  <div class="event-wrapper">
-    <p>いいねしたイベント</p>
-    <div class="event-items-wrapper">
-      <ul class="event-items-list">
-        <% current_user.goods.each do |good| %>
-          <li>
+  <div class="event-wrapper container my-5">
+    <h4>いいねしたイベント</h4>
+    <ul class="event-items-list row">
+      <% current_user.goods.each do |good| %>
+        <% user = User.find(good.room.create_user_id) %>
+        <div class="col-3">
+          <li class='event-list-item<%= user.user_detail.gender_id %>'>
             <% if good.room.name.present? %>
               <div><%= link_to good.room.name, room_path(good.room) %></div>
             <% else %>
@@ -41,13 +42,13 @@
             <div><%= good.room.room_detail&.atmosphere %></div>
             <div><%= good.room.room_detail&.treat&.name %></div>
           </li>
-        <% end %>
-      </ul>
-    </div>
+        </div>
+      <% end %>
+    </ul>
   </div>
 
-  <div class="event-wrapper">
-    <p>参加中のイベント</p>
+  <div class="event-wrapper container my-5">
+    <h4>参加中のイベント</h4>
     <%= render partial: 'home/room_index', locals: {rooms: @user.rooms } %>
   </div>
 <% end %>
