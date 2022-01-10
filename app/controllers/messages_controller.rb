@@ -5,11 +5,8 @@ class MessagesController < ApplicationController
 
   def create
     @message = Message.new(message_params)
-    if @message.save
-      redirect_to room_path(params[:room_id])
-    else
-      render 'room/show'
-    end
+    @message.save
+    redirect_to room_path(params[:room_id])
   end
 
   def destroy
