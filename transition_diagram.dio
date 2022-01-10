@@ -1,0 +1,133 @@
+<mxfile host="65bd71144e">
+    <diagram id="g5sNlKNHyQ8gQ8Du53qk" name="ページ1">
+        <mxGraphModel dx="1122" dy="807" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="9" style="edgeStyle=none;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;endArrow=none;endFill=0;" edge="1" parent="1" source="2" target="3">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="2" value="トップページ" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="20" y="40" width="120" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="3" value="ログインページ" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="200" y="40" width="120" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="16" style="edgeStyle=orthogonalEdgeStyle;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;endArrow=none;endFill=0;" edge="1" parent="1" source="4">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="170" y="180" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="4" value="マイページ" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="200" y="160" width="120" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="15" style="edgeStyle=orthogonalEdgeStyle;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;endArrow=none;endFill=0;" edge="1" parent="1" source="5">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="170" y="240" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="5" value="ユーザー一覧" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="200" y="220" width="120" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="14" style="edgeStyle=orthogonalEdgeStyle;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;endArrow=none;endFill=0;" edge="1" parent="1" source="6">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="170" y="300" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="6" value="フォローユーザー&lt;br&gt;一覧" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="200" y="280" width="120" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="13" style="edgeStyle=orthogonalEdgeStyle;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;endArrow=none;endFill=0;" edge="1" parent="1" source="7">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="170" y="360" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="7" value="ルーム作成ページ" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="200" y="340" width="120" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="17" style="edgeStyle=orthogonalEdgeStyle;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;endArrow=none;endFill=0;" edge="1" parent="1" source="10">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="170" y="120" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="10" value="新規登録ページ" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="200" y="100" width="120" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="12" style="edgeStyle=orthogonalEdgeStyle;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;endArrow=none;endFill=0;" edge="1" parent="1" source="11">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="170" y="60" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="45" style="edgeStyle=orthogonalEdgeStyle;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;endArrow=none;endFill=0;" edge="1" parent="1" source="11" target="18">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="11" value="ルーム詳細ページ" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="200" y="400" width="120" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="18" value="ルーム編集ページ" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="380" y="400" width="120" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="39" style="edgeStyle=orthogonalEdgeStyle;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;endArrow=none;endFill=0;" edge="1" parent="1" source="27">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="350" y="300" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="27" value="フォローユーザー&lt;br&gt;検索ページ" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="380" y="340" width="120" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="38" style="edgeStyle=orthogonalEdgeStyle;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;endArrow=none;endFill=0;" edge="1" parent="1" source="28" target="6">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="28" value="フォローユーザー&lt;br&gt;詳細ページ" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="380" y="280" width="120" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="32" style="edgeStyle=orthogonalEdgeStyle;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;endArrow=none;endFill=0;" edge="1" parent="1" source="29" target="4">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="29" value="ユーザー編集ページ" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="380" y="160" width="120" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="35" style="edgeStyle=orthogonalEdgeStyle;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;endArrow=none;endFill=0;" edge="1" parent="1" source="30">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="350" y="120" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="30" value="ユーザーディテール情報登録ページ" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="380" y="100" width="120" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="34" style="edgeStyle=orthogonalEdgeStyle;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;endArrow=none;endFill=0;" edge="1" parent="1" source="31">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="350" y="180" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="31" value="ユーザーディテール情報編集ページ" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="380" y="40" width="120" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="37" style="edgeStyle=orthogonalEdgeStyle;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;endArrow=none;endFill=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="36" target="5">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="340" y="240" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="36" value="ユーザー&lt;br&gt;詳細ページ" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="380" y="220" width="120" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="47" style="edgeStyle=orthogonalEdgeStyle;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;endArrow=none;endFill=0;" edge="1" parent="1" source="42">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="350" y="480" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="42" value="ルームディテール&lt;br&gt;情報登録ページ" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="380" y="460" width="120" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="46" style="edgeStyle=orthogonalEdgeStyle;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;endArrow=none;endFill=0;" edge="1" parent="1" source="43">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="350" y="420" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="43" value="ルームディテール&lt;br&gt;情報編集ページ" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="380" y="520" width="120" height="40" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
