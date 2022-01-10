@@ -1,7 +1,9 @@
 class RoomsController < ApplicationController
   before_action :authenticate_user!, except: [:show]
   before_action :set_room, only: [:show, :edit, :update, :destroy, :allow, :invite]
-  before_action :user_of_this_room?, only: [:edit, :update, :destroy, :allow, :invite]
+  before_action :user_of_this_room?, only: [:edit, :update, :destroy, :invite]
+  before_action ->{set_user_of_create_this_room(@room)}, only: [:allow]
+  before_action ->{ensure_correct_user(@user)}, only: [:allow]
 
   def show
     @message = Message.new

@@ -21,6 +21,10 @@ class ApplicationController < ActionController::Base
     @room = Room.find(params[:room_id])
   end
 
+  def set_user_of_create_this_room(room)
+    @user = User.find(room.create_user_id)
+  end
+
   private
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:nickname])
