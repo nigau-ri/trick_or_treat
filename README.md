@@ -10,5 +10,5 @@
 | アプリケーションを作成した背景 | 私自身、同年代の友人が家庭を持つなどして飲みに行く機会が少なくなった。また、若い時に比べて一緒に飲みに行く相手を探すことがさらに難しくなったという課題に直面している。しかし、同じコミュニティ内にいなかったり、可視化されていないだけで、同じように「一緒に飲みに行く相手を探している」という思いを持った人も少なからずいるはずだという仮説を立てた。それを解決するために、イベントや飲み会を開催したい人と参加したい人とをマッチングさせるアプリケーションを開発することにした |
 | 洗い出した要件 | https://docs.google.com/spreadsheets/d/1VMtY1PBd6klZ8zpaQkJdMUHaJmUNnz1mhTBgR-AfEWE/edit#gid=982722306 |
 | データベース設計 | ![trick_or_treat](https://user-images.githubusercontent.com/94505289/148728431-1648c29e-49e7-4411-934a-e30583f07cfa.png) |
-| 画面遷移図 | これから作成 |
+| 画面遷移図 | ![transition_diagram](https://user-images.githubusercontent.com/94505289/148732710-149f22bc-5738-4205-838c-1d6290b742f5.png) |
 | 開発環境 | フロントエンド：HTML, CSS, JavaScript<br>バックエンド：Ruby(ver 2.6.5)/ Ruby on Rails(ver 6.0.0)<br>テキストエディタ：Visual Studio Code<br>タスク管理：GitHub |
