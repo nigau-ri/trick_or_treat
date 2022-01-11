@@ -1,11 +1,12 @@
 <div class='account-page__inner--right user-form'>
   <%= form_with model: [current_user, @user_detail], local: true do |f|%>
+    <%= render 'shared/error_messages', model: f.object %>
     <div class='field'> 
       <div class='field-label'>
         <%= f.label :age%>
       </div>
       <div class='field-input'>
-        <%= f.select :age, 20..200, {include_blank: '---'}%>
+        <%= f.select :age, 20..200, {include_blank: '---'}, class: 'form-control'%>
       </div>
     </div>
     <div class='field'>
@@ -13,7 +14,7 @@
         <%= f.label :gender_id%>
       </div>
       <div class='field-input'>
-        <%= f.collection_select(:gender_id, Gender.all, :id, :name, {include_blank: '---'})%>
+        <%= f.collection_select(:gender_id, Gender.all, :id, :name, {include_blank: '---'}, {class: 'form-control'})%>
       </div>
     </div>
     <div class='field'>
@@ -21,7 +22,7 @@
         <%= f.label :prefecture_id%>
       </div>
       <div class='field-input'>
-        <%= f.collection_select(:prefecture_id, Prefecture.all, :id, :name, {include_blank: '---'})%>
+        <%= f.collection_select(:prefecture_id, Prefecture.all, :id, :name, {include_blank: '---'}, {class: 'form-control'})%>
       </div>
     </div>
     <div class='field'>
@@ -29,7 +30,7 @@
         <%= f.label :city%>
       </div>
       <div class='field-input'>
-        <%= f.text_field :city%>
+        <%= f.text_field :city, class: 'form-control'%>
       </div>
     </div>
     <div class='field'>
@@ -37,7 +38,7 @@
         <%= f.label :hobby%>
       </div>
       <div class='field-input'>
-        <%= f.text_field :hobby%>
+        <%= f.text_field :hobby, class:'form-control'%>
       </div>
     </div>
     <div class='actions'>

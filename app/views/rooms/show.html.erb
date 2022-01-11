@@ -21,24 +21,32 @@
   </ul>
 
   <% if @room.users.include?(current_user) %>
-    <%= link_to "ルーム名を編集する・ルームを削除する", edit_room_path(@room) %><br>
-    <% if @room.room_detail.present? %>
-      <%= link_to "詳細情報を編集する", edit_room_room_detail_path(@room, @room.room_detail) %>
-    <% else %>
-      <%= link_to "詳細情報を登録する", new_room_room_detail_path(@room) %>
-    <% end %>
-    <%= form_with(model:@user_room_intermediate, local: true, url: invite_room_path(@room)) do |f| %>
-      <% following_users = [] %>
-      <% current_user.followings.each do |following| %>
-        <% add_user = User.find(following.following_id) %>
-        <% if current_user.user_detail.gender_id == add_user.user_detail.gender_id %>
-          <% following_users << add_user %>
-        <% end %>
+    <div class="container m-1">
+      <%= link_to "ルーム名を編集する・ルームを削除する", edit_room_path(@room) %><br>
+      <% if @room.room_detail.present? %>
+        <%= link_to "詳細情報を編集する", edit_room_room_detail_path(@room, @room.room_detail) %>
+      <% else %>
+        <%= link_to "詳細情報を登録する", new_room_room_detail_path(@room) %>
       <% end %>
-      <%= f.label :invited_user_id, 'メンバーを追加する' %><br>
-      <%= f.collection_select :invited_user_id, following_users, :id, :nickname, {include_blank: '---'} %>
-      <%= f.submit '追加' %>
-    <% end %>
+      <%= form_with(model:@user_room_intermediate, local: true, url: invite_room_path(@room), class:'my-1') do |f| %>
+        <% following_users = [] %>
+        <% current_user.followings.each do |following| %>
+          <% add_user = User.find(following.following_id) %>
+          <% if current_user.user_detail.gender_id == add_user.user_detail.gender_id %>
+            <% following_users << add_user %>
+          <% end %>
+        <% end %>
+        <%= f.label :invited_user_id, 'メンバーを追加する' %><br>
+        <div class="input-group">
+          <div class="col-1 m-1">
+            <%= f.collection_select :invited_user_id, following_users, :id, :nickname, {include_blank: '---'}, class:'form-control' %>
+          </div>
+          <span class="m-1">
+            <%= f.submit '追加', class:'btn btn-primary' %>
+          </span>
+        </div>
+      <% end %>
+    </div>
   <% end %>
 </div>
 
@@ -80,10 +88,18 @@
     </ul>
   </div>
   <% if @room.users.include?(current_user) %>
-    <%= form_with(model:[@room, @message], local: true, class: 'room-message-form') do |f| %>
-      <%= f.text_field :text %>
-      <%= f.submit 'コメントする' %>
-    <% end %>
+    <div class="container">
+      <%= form_with(model:[@room, @message], local: true, class: 'room-message-form') do |f| %>
+        <div class="input-group">
+          <div class="col-5 mx-3">
+            <%= f.text_field :text, class:'form-control' %>
+          </div>
+          <span>
+            <%= f.submit 'コメントする', class:'btn btn-secondary' %>
+          </span>
+        </div>
+      <% end %>
+    </div>
   <% end %>
 </div>
 

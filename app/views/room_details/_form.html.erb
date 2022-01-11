@@ -1,12 +1,13 @@
 <div class="container mt-4">
   <div class='account-page__inner--right user-form'>
     <%= form_with model: [@room, @room_detail], local: true do |f|%>
+      <%= render 'shared/error_messages', model: f.object %>
       <div class='field mb-3'>
         <div class='field-label'>
           <%= f.label :place, '開催場所'%>
         </div>
-        <div class='field-input'>
-          <%= f.text_field :place %>
+        <div class='field-input col-3'>
+          <%= f.text_field :place, class: 'form-control' %>
         </div>
       </div>
       <div class="field">
@@ -31,24 +32,24 @@
         <div class='field-label'>
           <%= f.label :number_of_people, '相手の希望人数'%>  
         </div>
-        <div class='field-input'>
-          <%= f.select :number_of_people, 1..200, {include_blank: '---'}%><em>人</em>
+        <div class='field-input col-1'>
+          <%= f.select :number_of_people, 1..200, {include_blank: '---'} %>人
         </div>
       </div>
       <div class='field mb-3'>
         <div class='field-label'>
           <%= f.label :atmosphere, '雰囲気' %>
         </div>
-        <div class='field-input'>
-          <%= f.text_field :atmosphere %>
+        <div class='field-input col-3'>
+          <%= f.text_field :atmosphere, class: 'form-control' %>
         </div>
       </div>
       <div class='field mb-3'>
         <div class='field-label'>
           <%= f.label :treat_id, 'Trick or Treat' %>
         </div>
-        <div class='field-input'>
-          <%= f.collection_select(:treat_id, Treat.all, :id, :name, {include_blank: '---'})%>
+        <div class='field-input col-3'>
+          <%= f.collection_select(:treat_id, Treat.all, :id, :name, {include_blank: '---'}, class: 'form-control' )%>
         </div>
       </div>
       <div class='actions'>
