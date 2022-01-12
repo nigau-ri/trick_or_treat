@@ -30,7 +30,6 @@ class FollowingsController < ApplicationController
   def search
     @q = FollowingTag.ransack(params[:q])
     @following_tag = FollowingTag.find(params[:q][:name])
-    @followings = @following_tag.followings
   end
 
   private

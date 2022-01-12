@@ -7,14 +7,14 @@
 
 <div class="container">
   <ul class="following-users-list">
-    <% @followings.each do |following| %>
-      <% if follow = Following.find_by(following_id: following.following_id, user_id: current_user.id) %>
-        <% user = User.find(follow.following_id) %>
+    <% current_user.followings.each do |following| %>
+      <% if following.following_tags.include?(@following_tag) %>
+        <% user = User.find(following.following_id) %>
         <li class="following-user-list-item"> 
-          <%= link_to user.nickname, following_path(follow) %>
-          <%= link_to 'followをはずす', following_path(follow), method: :delete, class: 'followed-button hidden' %>
+          <%= link_to user.nickname, following_path(following) %>
+          <%= link_to 'followをはずす', following_path(following), method: :delete, class: 'followed-button hidden' %>
           <div class="added-following-tag">
-            <% follow.following_tags.each do |tag| %>
+            <% following.following_tags.each do |tag| %>
               <div class="following-tag-item"># <%= tag.name %></div>
             <% end %>
           </div>

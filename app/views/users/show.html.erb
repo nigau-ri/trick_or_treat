@@ -4,7 +4,7 @@
   <h4 class="mt-3"><%= @user.nickname %>さんのページ</h4>
   <ul>
     <li>年齢　：<%= @user.user_detail&.age %></li>
-    <li>性別　：<%= @user.user_detail&.gender.name %></li>
+    <li>性別　：<%= @user.user_detail&.gender&.name %></li>
     <li>居住地：<%= @user.user_detail&.prefecture&.name %> <%= @user.user_detail&.city %></li>
     <li>趣味　：<%= @user.user_detail&.hobby %></li>
   </ul>

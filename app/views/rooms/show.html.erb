@@ -32,7 +32,7 @@
         <% following_users = [] %>
         <% current_user.followings.each do |following| %>
           <% add_user = User.find(following.following_id) %>
-          <% if current_user.user_detail.gender_id == add_user.user_detail.gender_id %>
+          <% if current_user.user_detail.gender_id == add_user.user_detail&.gender_id %>
             <% following_users << add_user %>
           <% end %>
         <% end %>
@@ -110,7 +110,7 @@
         <div class="room-good-list">
           <ul>
             <% @goods.each do |good| %>
-              <li>
+              <li class="my-3">
                 🌟　<%= good.text %>　：　<%= link_to good.user.nickname, user_path(good.user) %>
                 <% if current_user.id == @room.create_user_id %>
                   <%= link_to 'allow', "#", class: 'room-allow-button', id: 'room-allow-button' %>
