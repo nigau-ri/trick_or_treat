@@ -7,18 +7,22 @@
       <h5>登録しているユーザーでログイン</h5>
       <%= link_to "Sign up", new_user_registration_path %>
     </div>
+    <div class='login-flash-message'>
+      <%= flash[:notice] %>
+      <%= flash[:alert] %>
+    </div>
     <div class='account-page__inner--right user-form'>
       <%= form_with model: resource, as: resource_name, url: session_path(resource_name), local: true do |f|%>
         <div class='field'>
           <div class='field-label'>
-            <%= f.label :email%>
+            <%= f.label :email, 'Email'%>
           </div>
           <div class='field-input'>
             <%= f.email_field :email, autofocus: true%>
           </div>
           <div class='field'>
             <div class='field-label'>
-              <%= f.label :password%>
+              <%= f.label :password, 'Password'%>
               <i>(英数字6文字以上)</i>
             </div>
             <div class='field-input'>

@@ -20,7 +20,7 @@
         </div>
         <div class='field'>
           <div class='field-label'>
-            <%= f.label :email%>
+            <%= f.label :email, 'Email'%>
             <i>(必須)</i>
           </div>
           <div class='field-input'>
@@ -29,7 +29,7 @@
         </div>
         <div class='field'>
           <div class='field-label'>
-            <%= f.label :password%>
+            <%= f.label :password, 'Password'%>
             <i>(英数字6文字以上)(必須)</i>
           </div>
           <div class='field-input'>
@@ -38,8 +38,8 @@
         </div>
         <div class='field'>
           <div class='field-label'>
-            <%= f.label :password_confirmation%>
-            <i>(必須)</i>
+            <%= f.label :password_confirmation, 'Password'%>
+            <i>（確認用）(必須)</i>
           </div>
           <div class='field-input'>
             <%= f.password_field :password_confirmation, autocomplete: "off"%>

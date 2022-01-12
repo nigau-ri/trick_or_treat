@@ -1,6 +1,6 @@
 <%= render "shared/header" %>
 
-<div class="container mb-5">
+<div class="container" style="margin-bottom:30vh;">
   <h2 class="mt-3">イベントを作成する</h2>
   <%= form_with(model: @room, local: true) do |f| %>
     <%= f.text_field :name, placeholder: 'イベント名' %>

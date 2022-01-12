@@ -1,32 +1,27 @@
 <%= render "shared/header" %>
 
-<div class="users-list-header">
-  <h4 class="mt-4">フォロー中のユーザーを”＃ <%= @following_tag.name %>”タグで絞り込む</h4>
-  <form>
-    <input type="checkbox" id="remove-follow">
-    <label for="remove-follow">フォローをはずす</label>
-  </form>
-  <%= search_form_for @q, url: search_followings_path, id: 'following-user-search-form' do |f| %>
-    <%= f.label :name, 'タグで絞り込む' %><br>
-    <%= f.collection_select(:name, FollowingTag.all, :id, :name, {include_blank: '---'}) %>
-  <% end %>
+<div class="container">
+  <h4 class="mt-4">フォロー中のユーザーを <span class="following_user_searching_tag">＃ <%= @following_tag.name %></span> タグで絞り込む</h4>
+  <%= render 'following_user_search_form' %>
 </div>
 
-<ul class="following-users-list">
-  <% @followings.each do |following| %>
-    <% if follow = Following.find_by(following_id: following.following_id, user_id: current_user.id) %>
-      <% user = User.find(follow.following_id) %>
-      <li class="following-user-list-item"> 
-        <%= link_to user.nickname, following_path(follow) %>
-        <%= link_to 'followをはずす', following_path(follow), method: :delete, class: 'followed-button hidden' %>
-        <div class="added-following-tag">
-          <% follow.following_tags.each do |tag| %>
-            <div class="following-tag-item"># <%= tag.name %></div>
-          <% end %>
-        </div>
-      </li>
+<div class="container">
+  <ul class="following-users-list">
+    <% @followings.each do |following| %>
+      <% if follow = Following.find_by(following_id: following.following_id, user_id: current_user.id) %>
+        <% user = User.find(follow.following_id) %>
+        <li class="following-user-list-item"> 
+          <%= link_to user.nickname, following_path(follow) %>
+          <%= link_to 'followをはずす', following_path(follow), method: :delete, class: 'followed-button hidden' %>
+          <div class="added-following-tag">
+            <% follow.following_tags.each do |tag| %>
+              <div class="following-tag-item"># <%= tag.name %></div>
+            <% end %>
+          </div>
+        </li>
+      <% end %>
     <% end %>
-  <% end %>
-</ul>
+  </ul>
+</div>
 
 <%= render "shared/footer" %>

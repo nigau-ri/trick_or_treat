@@ -19,7 +19,7 @@
 }
 
 .following-users-list {
-  margin: 20px 50px;
+  margin: 20px 0;
   background-color: rgb(245, 234, 221);
   width: 750px;
   list-style: none;
@@ -52,4 +52,10 @@
 
 .field_with_errors {
   display: contents;
+}
+
+.following_user_searching_tag {
+  background-color: yellowgreen;
+  border-radius: 6px;
+  padding: 6px 12px 6px 6px;
 }

@@ -4,6 +4,5 @@ class UserDetail < ApplicationRecord
   belongs_to :prefecture
   belongs_to :user
 
-  validates :gender_id, presence: true, numericality: {only_integer: true}
-  validates :prefecture_id, numericality: {only_integer: true}
+  validates :gender_id, presence: true
 end

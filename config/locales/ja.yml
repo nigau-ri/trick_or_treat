@@ -1,0 +1,11 @@
+ja:
+  activerecord:
+    attributes:
+      user:
+        nickname: ニックネーム
+      user_detail:
+        gender_id: 性別
+      following_tag:
+        name: タグの内容
+      room_detail:
+        treat_id: Trick or Treat の欄

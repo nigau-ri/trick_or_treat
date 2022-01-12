@@ -1,0 +1,14 @@
+<div class="row">
+  <div class="col-2 mx-2">
+    <%= search_form_for @q, url: search_followings_path, id: 'following-user-search-form' do |f| %>
+      <%= f.collection_select(:name, FollowingTag.all, :id, :name, {include_blank: '---'}, class:'mx-1') %>
+      <%= f.label :name, 'タグで絞り込む' %>
+    <% end %>
+  </div>
+  <div class="form-check form-switch col-2">
+    <form>
+      <input type="checkbox" id="remove-follow" class="form-check-input">
+      <label for="remove-follow" class="form-check-label">フォローをはずす</label>
+    </form>
+  </div>
+</div>

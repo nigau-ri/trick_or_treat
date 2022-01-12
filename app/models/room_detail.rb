@@ -3,5 +3,5 @@ class RoomDetail < ApplicationRecord
   belongs_to :treat
   belongs_to :room
 
-  validates :treat_id, numericality: {only_integer: true}
+  validates :treat_id, presence: true
 end
