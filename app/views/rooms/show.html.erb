@@ -50,89 +50,90 @@
   <% end %>
 </div>
 
-
-<% if @room.matched == 'yet' %>
-  <% if user_signed_in? %>
-    <% unless @room.users.include?(current_user) %>
-      <% if good = Good.find_by(user_id: current_user.id, room_id: @room.id) %>
-        <div class="room-good-wrapper">
-          🌟　<%= good.text %>　：　<%= good.user.nickname %>
-          <%= link_to '削除', room_good_path(@room, good), method: :delete, class: 'good-delete-button' %>
-        </div>
-      <% else %>
-        <%= form_with(model:[@room, @good], local: true, class: "room-good-form") do |f| %>
-          <%= f.label :text, 'いいねする❕' %><br>
-          <%= f.text_field :text, placeholder: 'アピール' %>
-          <%= f.submit 'いいね！' %>
+<div class="container">
+  <% if @room.matched == 'yet' %>
+    <% if user_signed_in? %>
+      <% unless @room.users.include?(current_user) %>
+        <% if good = Good.find_by(user_id: current_user.id, room_id: @room.id) %>
+          <div class="room-good-wrapper">
+            🌟　<%= good.text %>　：　<%= good.user.nickname %>
+            <%= link_to '削除', room_good_path(@room, good), method: :delete, class: 'good-delete-button' %>
+          </div>
+        <% else %>
+          <%= form_with(model:[@room, @good], local: true, class: "room-good-form") do |f| %>
+            <%= f.label :text, 'いいねする❕' %><br>
+            <%= f.text_field :text, placeholder: 'アピール' %>
+            <%= f.submit 'いいね！' %>
+          <% end %>
         <% end %>
       <% end %>
     <% end %>
   <% end %>
-<% end %>
 
-<div class="room-message-wrapper">
-  <h5>☆message☆</h5>
-  <div class="room-message-list">
-    <ul>
-      <% @messages.each do |message| %>
-        <li>
-          <p><%= message.user.nickname %>:</p>
-          <div>
-            <%= message.text %>
-            <% if current_user == message.user %>
-              <%= link_to '削除', room_message_path(@room, message), method: :delete %>
-            <% end %>
-          </div>
-        </li>
-      <% end %>
-    </ul>
-  </div>
-  <% if @room.users.include?(current_user) %>
-    <div class="container">
-      <%= form_with(model:[@room, @message], local: true, class: 'room-message-form') do |f| %>
-        <div class="input-group">
-          <div class="col-5 mx-3">
-            <%= f.text_field :text, class:'form-control' %>
-          </div>
-          <span>
-            <%= f.submit 'コメントする', class:'btn btn-secondary' %>
-          </span>
-        </div>
-      <% end %>
+  <div class="room-message-wrapper">
+    <h5>☆message☆</h5>
+    <div class="room-message-list">
+      <ul>
+        <% @messages.each do |message| %>
+          <li>
+            <p><%= message.user.nickname %>:</p>
+            <div>
+              <%= message.text %>
+              <% if current_user == message.user %>
+                <%= link_to '削除', room_message_path(@room, message), method: :delete %>
+              <% end %>
+            </div>
+          </li>
+        <% end %>
+      </ul>
     </div>
+    <% if @room.users.include?(current_user) %>
+      <div class="container">
+        <%= form_with(model:[@room, @message], local: true, class: 'room-message-form') do |f| %>
+          <div class="input-group">
+            <div class="col-5 mx-3">
+              <%= f.text_field :text, class:'form-control' %>
+            </div>
+            <span>
+              <%= f.submit 'コメントする', class:'btn btn-secondary' %>
+            </span>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+
+  <% if @room.matched == 'yet' %>
+    <% if @room.users.include?(current_user) %>
+      <div class="room-good-wrapper">
+        <h5>もらった いいね❕</h5>
+        <div class="room-good-list">
+          <ul>
+            <% @goods.each do |good| %>
+              <li>
+                🌟　<%= good.text %>　：　<%= link_to good.user.nickname, user_path(good.user) %>
+                <% if current_user.id == @room.create_user_id %>
+                  <%= link_to 'allow', "#", class: 'room-allow-button', id: 'room-allow-button' %>
+                  <div id="mask" class="hidden"></div>
+                  <div id="modal" class="hidden">
+                    <p>⚠️注意⚠️<p>
+                    <div class='modal-explanation-wrapper'>
+                      マッチングが成立すると、このルームの「いいね」は<br>全て消去されます。<br>
+                      <%= good.user.nickname %>さんの入室を許可しますか？<br>
+                    </div>
+                    <div class="allow-confirm-button">
+                      <div id="allow-room-yes-button" class="btn"><%= link_to 'はい', allow_room_path(@room, allowed_user_id: good.user.id) %></div>
+                      <div id="allow-room-cancel-button" class="btn">マッチングを中止する</div>
+                    </div>
+                  </div>
+                <% end %>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    <% end %>
   <% end %>
 </div>
-
-<% if @room.matched == 'yet' %>
-  <% if @room.users.include?(current_user) %>
-    <div class="room-good-wrapper">
-      <h5>もらった いいね❕</h5>
-      <div class="room-good-list">
-        <ul>
-          <% @goods.each do |good| %>
-            <li>
-              🌟　<%= good.text %>　：　<%= link_to good.user.nickname, user_path(good.user) %>
-              <% if current_user.id == @room.create_user_id %>
-                <%= link_to 'allow', "#", class: 'room-allow-button', id: 'room-allow-button' %>
-                <div id="mask" class="hidden"></div>
-                <div id="modal" class="hidden">
-                  <p>⚠️注意⚠️<p>
-                  <div class='modal-explanation-wrapper'>
-                    マッチングが成立すると、このルームの「いいね」は<br>全て消去されます。<br>
-                    <%= good.user.nickname %>さんの入室を許可しますか？<br>
-                  </div>
-                  <div class="allow-confirm-button">
-                    <div id="allow-room-yes-button" class="btn"><%= link_to 'はい', allow_room_path(@room, allowed_user_id: good.user.id) %></div>
-                    <div id="allow-room-cancel-button" class="btn">マッチングを中止する</div>
-                  </div>
-                </div>
-              <% end %>
-            </li>
-          <% end %>
-        </ul>
-      </div>
-    </div>
-  <% end %>
-<% end %>
 
 <%= render "shared/footer" %>

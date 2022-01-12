@@ -80,7 +80,7 @@
   bottom: 0;
   right: 0;
   left: 0;
-  z-index: 1;
+  z-index: 3;
 }
 
 #modal {
@@ -92,7 +92,7 @@
   margin: 0 auto;
   transform: translate(0, 0) scale(1);
   transition: 0.2s;   /* transitionでアニメーションを作成 */
-  z-index: 2;   /* マスクより上に重なるようにする */
+  z-index: 4;   /* マスクより上に重なるようにする */
   width: 500px;   /* showビューの幅に合わせて設定 */
   background-color: whitesmoke;
   color: black;

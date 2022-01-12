@@ -1,6 +1,6 @@
 <%= render "shared/header" %>
 
-<div class="container" style="margin-bottom:30vh;">
+<div class="container">
   <h2 class="mt-3">イベントを編集する</h2>
   <%= form_with(model: @room, local: true, class: 'mb-3') do |f| %>
     <%= f.text_field :name, placeholder: 'イベント名' %>

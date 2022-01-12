@@ -1,13 +1,21 @@
 <%= render "shared/header" %>
 <% if user_signed_in? %>
-  <div class="create-room-wrapper">
-    <%= link_to 'イベントの作成', new_room_path %>
+  <div class="container">
+    <div class="card create-room-wrapper" >
+      <img src="/assets/create-room-card-image.jpeg" class="card-img-top" alt="party-image">
+      <div class="card-body">
+        <p class="card-text">アカウント登録と詳細情報の性別を登録することでイベントを作成することができます。</p>
+        <%= link_to 'イベントを作成する', new_room_path, class:"btn btn-primary"%>
+      </div>
+    </div>
   </div>
 <% end %>
 
-<div class="event-wrapper container my-5">
-  <h3>イベント一覧</h3>
-  <%= render partial: 'room_index', locals: {rooms: @rooms} %>
+<div class="event-wrapper container my-5 p-0">
+  <div class="event-wrapper-second">
+    <h3>イベント一覧</h3>
+    <%= render partial: 'room_index', locals: {rooms: @rooms} %>
+  </div>
 </div>
 
 <%= render "shared/footer" %>

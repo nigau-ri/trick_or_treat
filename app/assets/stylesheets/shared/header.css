@@ -3,7 +3,12 @@
   padding-top: 2vh;
   display: flex;
   flex-direction: column;
-  background-color: rgb(169, 241, 217);
+  background-image: url(assets/header-background-image.jpg);
+  background-size: cover;
+}
+
+.top-page-header a {
+  color: aliceblue;
 }
 
 .top-page-header-contents {
@@ -34,7 +39,6 @@
 .category-list {
   text-decoration: none;
   margin-right: 3vw;
-  color: #333333;
 }
 
 .lists-right {
@@ -46,22 +50,18 @@
 .user-nickname {
   text-decoration: none;
   margin-right: 3vw;
-  color: #333333;
   font-weight: bold;
 }
 
 .logout {
   text-decoration: none;
-  color: #333333;
 }
 
 .login {
   text-decoration: none;
   margin-right: 3vw;
-  color: #333333;
 }
 
 .sign-up {
   text-decoration: none;
-  color: #333333;
 }

@@ -1,18 +1,25 @@
-<ul class="event-items-list row">
+<ul class="row p-3">
   <% rooms.each do |room| %>
     <% user = User.find(room.create_user_id) %>
-    <div class="col-3">
+    <div class="col-3 p-4">
       <li class='event-list-item<%= user.user_detail.gender_id %>'>
-        <% if room.name.present? %>
-          <div><%= link_to room.name, room_path(room) %></div>
-        <% else %>
-          <div><%= link_to "#{room.room_detail&.date}＠#{room.room_detail&.place}", room_path(room) %></div>
-        <% end %>
-        <div><%= room.room_detail&.place %></div>
-        <div><%= room.room_detail&.date %></div>
-        <div><%= room.room_detail&.number_of_people %>人 - <%= room.room_detail&.number_of_people %>人</div>
-        <div><%= room.room_detail&.atmosphere %></div>
-        <div><%= room.room_detail&.treat&.name %></div>
+        <div class="card" >
+          <div class="card-body">
+            <h5 class="card-title">
+              <% if room.name.present? %>
+                <div><%= link_to room.name, room_path(room) %></div>
+              <% else %>
+                <div><%= link_to "#{room.room_detail&.date}＠#{room.room_detail&.place}", room_path(room) %></div>
+              <% end %>
+            </h5>
+            <div class="card-text mb-1"><%= room.room_detail&.place %></div>
+            <div class="card-text mb-1"><%= room.room_detail&.date %></div>
+            <div class="card-text mb-1"><%= room.room_detail&.number_of_people %>人 - <%= room.room_detail&.number_of_people %>人</div>
+            <div class="card-text mb-1"><%= room.room_detail&.atmosphere %></div>
+            <div class="card-text mb-1"><%= room.room_detail&.treat&.name %></div>
+            <div class="card-text mb-1">主催者：<%= link_to user.nickname, user_path(user), class:'card-link' %></div>
+          </div>
+        </div>
       </li>
     </div>
   <% end %>

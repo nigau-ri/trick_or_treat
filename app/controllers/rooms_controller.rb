@@ -15,6 +15,7 @@ class RoomsController < ApplicationController
   end
 
   def new
+    redirect_to new_user_user_detail_path(current_user) and return if current_user.user_detail.blank?
     @room = Room.new
   end
 
