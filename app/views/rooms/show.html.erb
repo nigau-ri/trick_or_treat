@@ -32,7 +32,7 @@
         <% following_users = [] %>
         <% current_user.followings.each do |following| %>
           <% add_user = User.find(following.following_id) %>
-          <% if current_user.user_detail.gender_id == add_user.user_detail&.gender_id %>
+          <% if current_user.user_detail && current_user.user_detail&.gender_id == add_user.user_detail&.gender_id %>
             <% following_users << add_user %>
           <% end %>
         <% end %>
@@ -113,19 +113,7 @@
               <li class="my-3">
                 🌟　<%= good.text %>　：　<%= link_to good.user.nickname, user_path(good.user) %>
                 <% if current_user.id == @room.create_user_id %>
-                  <%= link_to 'allow', "#", class: 'room-allow-button', id: 'room-allow-button' %>
-                  <div id="mask" class="hidden"></div>
-                  <div id="modal" class="hidden">
-                    <p>⚠️注意⚠️<p>
-                    <div class='modal-explanation-wrapper'>
-                      マッチングが成立すると、このルームの「いいね」は<br>全て消去されます。<br>
-                      <%= good.user.nickname %>さんの入室を許可しますか？<br>
-                    </div>
-                    <div class="allow-confirm-button">
-                      <div id="allow-room-yes-button" class="btn"><%= link_to 'はい', allow_room_path(@room, allowed_user_id: good.user.id) %></div>
-                      <div id="allow-room-cancel-button" class="btn">マッチングを中止する</div>
-                    </div>
-                  </div>
+                  <%= link_to 'allow', allow_room_path(@room, allowed_user_id: good.user.id), class: 'room-allow-button', value:good.user.nickname %>
                 <% end %>
               </li>
             <% end %>
@@ -136,4 +124,16 @@
   <% end %>
 </div>
 
+<div id="mask" class="hidden"></div>
+<div id="modal" class="hidden">
+  <p>⚠️注意⚠️<p>
+  <div class='modal-explanation-wrapper'>
+    マッチングが成立すると、このルームの「いいね」は<br>全て消去されます。<br>
+    <span id="allowed_user_nickname"></span>さんの入室を許可しますか？<br>
+  </div>
+  <div class="allow-confirm-button">
+    <div id="allow-room-yes-button" class="btn"><%= link_to 'はい', "#", id:"allow-room-yes-button-a"%></div> 
+    <div id="allow-room-cancel-button" class="btn">マッチングを中止する</div>
+  </div>
+</div>
 <%= render "shared/footer" %>

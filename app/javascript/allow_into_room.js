@@ -1,27 +1,33 @@
 function allowIntoRoom() {
-  const allowButton = document.getElementById('room-allow-button'); 
-  if(!allowButton) return null;
+  let allowButtons = document.querySelectorAll('.room-allow-button'); 
+  if(!allowButtons) return null;
 
-  allowButton.addEventListener('click', (e)=>{
-    e.preventDefault();
+  allowButtons = Array.from(allowButtons);
+  allowButtons.forEach((element)=>{
+    element.addEventListener('click', (e)=>{
+      e.preventDefault();
 
-    const modal = document.getElementById('modal');
-    const mask = document.getElementById('mask');
-    const cancel = document.getElementById('allow-room-cancel-button');
-    const hidden = ()=>{
-      modal.classList.add('hidden');
-      mask.classList.add('hidden');
-    };
+      const modal = document.getElementById('modal');
+      const mask = document.getElementById('mask');
+      const cancel = document.getElementById('allow-room-cancel-button');
+      const hidden = ()=>{
+        modal.classList.add('hidden');
+        mask.classList.add('hidden');
+      };
 
-    modal.classList.remove('hidden');
-    mask.classList.remove('hidden');
+      document.getElementById("allow-room-yes-button-a").href = element.href;
+      document.getElementById("allowed_user_nickname").innerHTML = element.getAttribute('value');
 
-    mask.addEventListener('click', () => {
-      hidden();
-    });
+      modal.classList.remove('hidden');
+      mask.classList.remove('hidden');
 
-    cancel.addEventListener('click', ()=>{
-      hidden();
+      mask.addEventListener('click', () => {
+        hidden();
+      });
+
+      cancel.addEventListener('click', ()=>{
+        hidden();
+      });
     });
   });
 }
