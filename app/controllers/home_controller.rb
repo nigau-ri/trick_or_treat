@@ -1,5 +1,6 @@
 class HomeController < ApplicationController
   def index
-    @rooms = Room.where(matched: 'yet')
+    @q = Room.where(matched: 'yet').ransack(params[:q])
+    @rooms = @q.result
   end
 end
