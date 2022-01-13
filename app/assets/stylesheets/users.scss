@@ -15,24 +15,26 @@
 
 .users-list {
   margin: 20px 50px;
-  background-color: rgb(245, 234, 221);
-  width: 300px;
-  padding: 10px 0;
+  background-color: rgba(104, 195, 197, 0.3);
+  width: 370px;
+  padding: 20px;
   position: relative;
   list-style: none;
   .user-list-item {
     margin: 15px 20px;
     padding: 10px;
-    background-color: rgb(241, 207, 165);
+    background: -moz-linear-gradient(top, #fff, rgba(104, 195, 197, 0.5));
+    background: -webkit-linear-gradient(top, #fff, rgba(104, 195, 197, 0.5));
+    background: linear-gradient(to bottom, #fff, rgba(104, 195, 197, 0.5));
     border-radius: 5px;
   }
   .follow-button {
     position: absolute;
     display: inline-block;
-    right: 12%;
+    right: 15%;
     text-decoration: none;
     color: white;
-    background-color: rgb(223, 110, 217);
+    background-color: rgba(247, 103, 239, 0.7);
     padding: 0 10px;
     border-radius: 10px;
     width: 90px;
@@ -41,10 +43,10 @@
   .already-follow-button {
     position: absolute;
     display: inline-block;
-    right: 12%;
+    right: 15%;
     text-decoration: none;
     color: white;
-    background-color: rgb(121, 122, 115);
+    background-color: rgba(121, 122, 115, 0.7);
     padding: 0 10px;
     border-radius: 10px;
     width: 90px;
@@ -52,6 +54,16 @@
   }
 }
 
+.users-list-image-wrapper {
+  background:url(assets/Viking.jpeg);
+  background-size: cover;
+  .users-list-image {
+    background: rgba(255, 255, 255, 0.9);
+  }
+  .users-list-image2 {
+    background: rgba(255, 255, 255, 0.4);
+  }
+}
 
 .event-wrapper {
   background-image: url(assets/flowers-decorating-the-centerpieces-with-luxury-cutlery-on-the-tables-of-a-wedding-hall);

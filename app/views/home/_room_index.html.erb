@@ -2,7 +2,7 @@
   <% rooms.each do |room| %>
     <% user = User.find(room.create_user_id) %>
     <div class="col-3 p-4">
-      <li class='event-list-item<%= user.user_detail.gender_id %>'>
+      <li class='event-list-item<%= user.user_detail.gender_id %> event-list-item'>
         <div class="card" >
           <div class="card-body">
             <h5 class="card-title">

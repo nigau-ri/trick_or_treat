@@ -1,21 +1,27 @@
 <%= render "shared/header" %>
 
-<div class="container">
-  <h2 class="users-list-header mt-4">ユーザー一覧</h2>
-  <ul class="users-list">
-    <% @users.each do |user| %>
-      <li class="user-list-item"> 
-        <%= link_to user.nickname, user_path(user) %>
-        <% if user_signed_in? %>
-          <% if following = Following.find_by(following_id: user.id, user_id: current_user.id) %>
-            <%= link_to 'follow 済', following_path(following), method: :delete, class: 'already-follow-button' %>
-          <% else %>
-            <%= link_to 'follow', followings_path(following_user: user.id), method: :post, class: 'follow-button' %>
-          <% end %>
+<div class="container p-0">
+  <div class="row users-list-image-wrapper">
+    <div class="col-6 users-list-image">
+      <h2 class="users-list-header mt-4">ユーザー一覧</h2>
+      <ul class="users-list">
+        <% @users.each do |user| %>
+          <li class="user-list-item"> 
+            <%= link_to user.nickname, user_path(user) %>
+            <% if user_signed_in? %>
+              <% if following = Following.find_by(following_id: user.id, user_id: current_user.id) %>
+                <%= link_to 'follow 済', following_path(following), method: :delete, class: 'already-follow-button' %>
+              <% else %>
+                <%= link_to 'follow', followings_path(following_user: user.id), method: :post, class: 'follow-button' %>
+              <% end %>
+            <% end %>
+          </li>
         <% end %>
-      </li>
-    <% end %>
-  </ul>
+      </ul>
+    </div>
+    <div class="col-6 users-list-image2">
+    </div>
+  </div>
 </div>
 
 <%= render "shared/footer" %>
