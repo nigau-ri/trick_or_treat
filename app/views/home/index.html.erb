@@ -1,19 +1,75 @@
 <%= render "shared/header" %>
-<% if user_signed_in? %>
-  <div class="container">
-    <div class="card create-room-wrapper" >
-      <img src="/assets/create-room-card-image.jpeg" class="card-img-top" alt="party-image">
-      <div class="card-body">
-        <p class="card-text">アカウント登録と詳細情報の性別を登録することでイベントを作成することができます。</p>
-        <%= link_to 'イベントを作成する', new_room_path, class:"btn btn-primary"%>
-      </div>
-    </div>
-  </div>
-<% end %>
 
-<div class="event-wrapper container my-5 p-0">
+<div class="container">
+  <div class="row">
+    <div class="col-6 m-5 event-search-form">
+      <h3 class="mx-3 mt-5">イベントを検索する</h3>
+      <%= search_form_for @q, url: root_path, class: 'mx-5 mb-4' do |f| %>
+        <div class="search-field">
+          <%= f.label :room_detail_place_cont, '開催場所' %><br>
+          <div class="row">
+            <div class="col-4">
+              <%= f.text_field :room_detail_place_cont, placeholder: '開催場所', class: 'm-2 form-control' %>
+            </div>
+          </div>
+        </div>
+        <div class="search-field">
+          <%= f.label :room_detail_date_gteq, '開催日' %><br>
+          <div class="row">
+            <div class="col-4">
+              <%= f.date_field :room_detail_date_gteq , class: 'm-2 form-control' %>
+            </div>
+            <div class="col-2 form-intermediate-item">〜</div>
+            <div class="col-4">
+              <%= f.date_field :room_detail_date_lteq , class: 'm-2 form-control' %>
+            </div>
+          </div>
+        </div>
+        <div class="search-field">
+          <%= f.label :room_detail_number_of_people_gteq, '人数' %><br>
+          <div class="row">
+            <div class="col-4">
+              <%= f.number_field :room_detail_number_of_people_gteq , class: 'm-2 form-control' %>
+            </div>
+            <div class="col-2 form-intermediate-item">人　〜</div>
+            <div class="col-4">
+              <%= f.number_field :room_detail_number_of_people_lteq , class: 'm-2 form-control' %>
+            </div>
+            <div class="col-1 form-intermediate-item">人</div>
+          </div>
+        </div>
+        <div class="search-field">
+          <%= f.label :room_detail_treat_id_eq, 'Trick or Treat' %><br>
+          <div class="row">
+            <div class="col-4">
+              <%= f.collection_select(:room_detail_treat_id_eq, Treat.all, :id, :name, {include_blank: '---'}, class: 'm-2 form-control' ) %>
+            </div>
+          </div>
+        </div>
+        <%= f.submit '検索' , class: 'btn btn-primary m-2' %>
+      <% end %>
+    </div>
+    <% if user_signed_in? %>
+      <div class="col-4 p-4">
+        <div class="card create-room-wrapper" >
+          <img src="/assets/create-room-card-image.jpeg" class="card-img-top" alt="party-image">
+          <div class="card-body">
+            <p class="card-text">アカウント登録と詳細情報の性別を登録することでイベントを作成することができます。</p>
+            <%= link_to 'イベントを作成する', new_room_path, class:"btn btn-primary"%>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<div class="container mt-5 mb-1">
+  <div class="row">
+    <h3>・イベント一覧</h3>
+  </div>
+</div>
+<div class="event-wrapper container p-0">
   <div class="event-wrapper-second">
-    <h3>イベント一覧</h3>
     <%= render partial: 'room_index', locals: {rooms: @rooms} %>
   </div>
 </div>
