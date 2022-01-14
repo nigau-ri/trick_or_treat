@@ -4,7 +4,8 @@
 
 .users-list-header {
   font-size: 25px;
-  margin-left: 35px;
+  margin-top: 40px;
+  margin-left: 20%;
   #remove-follow{
     margin-left: 15px;
   }
@@ -14,43 +15,43 @@
 }
 
 .users-list {
-  margin: 20px 50px;
-  background-color: rgba(104, 195, 197, 0.3);
+  margin: 25px auto;
   width: 370px;
-  padding: 20px;
   position: relative;
   list-style: none;
   .user-list-item {
-    margin: 15px 20px;
-    padding: 10px;
-    background: -moz-linear-gradient(top, #fff, rgba(104, 195, 197, 0.5));
-    background: -webkit-linear-gradient(top, #fff, rgba(104, 195, 197, 0.5));
-    background: linear-gradient(to bottom, #fff, rgba(104, 195, 197, 0.5));
-    border-radius: 5px;
-  }
-  .follow-button {
-    position: absolute;
-    display: inline-block;
-    right: 15%;
-    text-decoration: none;
-    color: white;
-    background-color: rgba(247, 103, 239, 0.7);
-    padding: 0 10px;
-    border-radius: 10px;
-    width: 90px;
-    text-align: center;
-  }
-  .already-follow-button {
-    position: absolute;
-    display: inline-block;
-    right: 15%;
-    text-decoration: none;
-    color: white;
-    background-color: rgba(121, 122, 115, 0.7);
-    padding: 0 10px;
-    border-radius: 10px;
-    width: 90px;
-    text-align: center;
+    padding: 15px 15px 15px 40px;
+    background: -moz-linear-gradient(top left, rgba(104, 195, 197, 0), rgba(104, 195, 197, 0.4));
+    background: -webkit-linear-gradient(top left, rgba(104, 195, 197, 0), rgba(104, 195, 197, 0.4));
+    background: linear-gradient(to bottom right, rgba(104, 195, 197, 0), rgba(104, 195, 197, 0.4));
+    a {
+      text-decoration: none;
+      color: rgb(104, 195, 197);
+    }
+    .follow-button {
+      position: absolute;
+      display: inline-block;
+      right: 15%;
+      text-decoration: none;
+      background-color: rgba(247, 103, 239, 0.7);
+      padding: 0 10px;
+      border-radius: 10px;
+      width: 90px;
+      text-align: center;
+      color: white;
+    }
+    .already-follow-button {
+      position: absolute;
+      display: inline-block;
+      right: 15%;
+      text-decoration: none;
+      background-color: rgba(121, 122, 115, 0.7);
+      padding: 0 10px;
+      border-radius: 10px;
+      width: 90px;
+      text-align: center;
+      color: white;
+    }
   }
 }
 

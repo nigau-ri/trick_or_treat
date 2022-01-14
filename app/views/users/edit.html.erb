@@ -6,10 +6,11 @@
       <h2>Edit Account</h2>
       <h5>アカウントの編集</h5>
       <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'btn'%>
-      <%= link_to "マイページに戻る", :back, class: 'btn'%>
+      <%= link_to "マイページに戻る", user_path(@user), class: 'btn'%>
     </div>
     <div class='account-page__inner--right user-form'>
-      <%= form_with model: current_user, local: true do |f|%>
+      <%= form_with model: @user, local: true do |f|%>
+        <%= render 'shared/error_messages', model: f.object %>
         <div class='field'>
           <div class='field-label'>
             <%= f.label :nickname%>
