@@ -3,7 +3,7 @@
   padding-top: 2vh;
   display: flex;
   flex-direction: column;
-  background-image: url(assets/header-background-image.jpg);
+  background-image: image-url("header-background-image.jpg");
   background-size: cover;
 }
 
