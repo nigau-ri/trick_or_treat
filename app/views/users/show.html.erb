@@ -1,7 +1,19 @@
 <%= render "shared/header" %>
 
 <div class="container">
-  <h4 class="mt-3"><%= @user.nickname %>さんのページ</h4>
+  <div class="row mt-2">
+    <h4 class="mt-3 col-3"><%= @user.nickname %>さんのページ</h4>
+    <% unless current_user&.id == @user.id %>
+      <div class="col-9 mt-2">
+        <% if following = Following.find_by(following_id: @user.id, user_id: current_user.id) %>
+          <%= link_to 'followをはずす', following_path(following), method: :delete, class: 'col-3 btn-secondary btn me-1' %>
+          <%= link_to "タグをつける", following_path(following), class: 'col-3 btn-primary btn me-1' %>
+        <% else %>
+          <%= link_to 'followする', followings_path(following_user: @user.id), method: :post, class: 'col-3 btn-primary btn me-1' %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
   <ul>
     <li>年齢　：<%= @user.user_detail&.age %></li>
     <li>性別　：<%= @user.user_detail&.gender&.name %></li>
