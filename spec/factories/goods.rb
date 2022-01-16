@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :good do
-    text {Faker::Lorem.sentence}
+    text { Faker::Lorem.sentence }
     association :user
     association :room
   end

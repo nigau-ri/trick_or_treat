@@ -2,8 +2,8 @@ class RoomsController < ApplicationController
   before_action :authenticate_user!, except: [:show]
   before_action :set_room, only: [:show, :edit, :update, :destroy, :allow, :invite]
   before_action :user_of_this_room?, only: [:edit, :update, :destroy, :invite]
-  before_action ->{set_user_of_create_this_room(@room)}, only: [:allow]
-  before_action ->{ensure_correct_user(@user)}, only: [:allow]
+  before_action -> { set_user_of_create_this_room(@room) }, only: [:allow]
+  before_action -> { ensure_correct_user(@user) }, only: [:allow]
 
   def show
     @message = Message.new
@@ -16,6 +16,7 @@ class RoomsController < ApplicationController
 
   def new
     redirect_to new_user_user_detail_path(current_user) and return if current_user.user_detail.blank?
+
     @room = Room.new
   end
 
@@ -26,7 +27,7 @@ class RoomsController < ApplicationController
   end
 
   def edit
-  end 
+  end
 
   def update
     @room.update(room_params)
@@ -56,6 +57,7 @@ class RoomsController < ApplicationController
   end
 
   private
+
   def room_params
     params.require(:room).permit(:name).merge(create_user_id: current_user.id)
   end

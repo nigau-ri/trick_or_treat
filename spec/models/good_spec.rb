@@ -11,7 +11,7 @@ RSpec.describe Good, type: :model do
         expect(@good).to be_valid
       end
       it 'いいねのコメントの内容が空でも登録できる' do
-        @good.text = ""
+        @good.text = ''
         expect(@good).to be_valid
       end
     end
@@ -19,12 +19,12 @@ RSpec.describe Good, type: :model do
       it 'userが空では登録できない' do
         @good.user = nil
         @good.valid?
-        expect(@good.errors.full_messages).to include("Userを入力してください")
+        expect(@good.errors.full_messages).to include('Userを入力してください')
       end
       it 'userが空では登録できない' do
         @good.room = nil
         @good.valid?
-        expect(@good.errors.full_messages).to include("Roomを入力してください")
+        expect(@good.errors.full_messages).to include('Roomを入力してください')
       end
     end
   end

@@ -14,6 +14,7 @@ class GoodsController < ApplicationController
   end
 
   private
+
   def good_params
     params.require(:good).permit(:text).merge(user_id: current_user.id, room_id: params[:room_id])
   end

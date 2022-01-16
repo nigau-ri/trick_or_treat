@@ -6,5 +6,4 @@ class Treat < ActiveHash::Base
 
   include ActiveHash::Associations
   has_many :room_details
-
 end

@@ -1,8 +1,8 @@
 class UserDetailsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_user_detail, only: [:edit, :update]
-  before_action ->{ensure_correct_user(@user_detail.user)}, only: [:edit, :update]
-  
+  before_action -> { ensure_correct_user(@user_detail.user) }, only: [:edit, :update]
+
   def new
     @user_detail = UserDetail.new
   end
@@ -16,12 +16,11 @@ class UserDetailsController < ApplicationController
   end
 
   def update
-    unless @user_detail.update(user_detail_params)
-      render :edit
-    end
+    render :edit unless @user_detail.update(user_detail_params)
   end
 
   private
+
   def user_detail_params
     params.require(:user_detail).permit(:age, :gender_id, :prefecture_id, :city, :hobby).merge(user_id: current_user.id)
   end

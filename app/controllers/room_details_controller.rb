@@ -2,7 +2,7 @@ class RoomDetailsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_room
   before_action :user_of_this_room?
-  
+
   def new
     @room_detail = RoomDetail.new
   end
@@ -30,6 +30,7 @@ class RoomDetailsController < ApplicationController
   end
 
   private
+
   def room_detail_params
     params.require(:room_detail).permit(:place, :date, :number_of_people, :treat_id, :atmosphere).merge(room_id: params[:room_id])
   end

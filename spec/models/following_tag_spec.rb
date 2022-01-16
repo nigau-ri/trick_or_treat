@@ -13,15 +13,15 @@ RSpec.describe FollowingTag, type: :model do
     end
     context '新規登録できないとき' do
       it '内容が空では登録できない' do
-        @following_tag.name = ""
+        @following_tag.name = ''
         @following_tag.valid?
-        expect(@following_tag.errors.full_messages).to include("タグの内容を入力してください")
+        expect(@following_tag.errors.full_messages).to include('タグの内容を入力してください')
       end
       it '既に登録されているタグ名では登録できない' do
         another_tag = FactoryBot.create(:following_tag)
         @following_tag.name = another_tag.name
         @following_tag.valid?
-        expect(@following_tag.errors.full_messages).to include("タグの内容はすでに存在します")
+        expect(@following_tag.errors.full_messages).to include('タグの内容はすでに存在します')
       end
     end
   end
