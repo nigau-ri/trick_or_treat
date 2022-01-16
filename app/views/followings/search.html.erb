@@ -8,18 +8,24 @@
 <div class="container">
   <ul class="following-users-list">
     <% current_user.followings.each do |following| %>
-      <% if following.following_tags.include?(@following_tag) %>
-        <% user = User.find(following.following_id) %>
-        <li class="following-user-list-item"> 
-          <%= link_to user.nickname, following_path(following) %>
-          <%= link_to 'followをはずす', following_path(following), method: :delete, class: 'followed-button hidden' %>
-          <div class="added-following-tag">
-            <% following.following_tags.each do |tag| %>
-              <div class="following-tag-item"># <%= tag.name %></div>
-            <% end %>
-          </div>
-        </li>
-      <% end %>
+      <div class="container">
+        <div class="row">
+          <% if following.following_tags.include?(@following_tag) %>
+            <% user = User.find(following.following_id) %>
+            <li class="following-user-list-item col-8"> 
+              <%= link_to user.nickname, user_path(user) %>
+              <%= link_to 'followをはずす', following_path(following), method: :delete, class: 'followed-button hidden' %>
+              <div class="added-following-tag">
+                <% following.following_tags.each do |tag| %>
+                  <div class="following-tag-item"># <%= tag.name %></div>
+                <% end %>
+              </div>
+            </li>
+            <%= link_to "タグをつける", following_path(following), class: 'col-2 to-following-show-btn btn ms-3 my-1' %>
+          <% end %>
+        </div>
+      </div>
+      
     <% end %>
   </ul>
 </div>

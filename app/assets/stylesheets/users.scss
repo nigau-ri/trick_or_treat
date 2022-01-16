@@ -16,7 +16,7 @@
 
 .users-list {
   margin: 25px auto;
-  width: 370px;
+  width: 450px;
   position: relative;
   list-style: none;
   .user-list-item {
@@ -31,7 +31,7 @@
     .follow-button {
       position: absolute;
       display: inline-block;
-      right: 15%;
+      right: 40%;
       text-decoration: none;
       background-color: rgba(247, 103, 239, 0.7);
       padding: 0 10px;
@@ -43,7 +43,7 @@
     .already-follow-button {
       position: absolute;
       display: inline-block;
-      right: 15%;
+      right: 40%;
       text-decoration: none;
       background-color: rgba(121, 122, 115, 0.7);
       padding: 0 10px;
@@ -51,6 +51,17 @@
       width: 90px;
       text-align: center;
       color: white;
+    }
+  }
+  .container {
+    position: relative;
+    .to-following-show-btn {
+      font-size: 0.8em;
+      background-color: rgba(25, 135, 84, 0.8);
+      color: honeydew;
+      position: absolute;
+      top: 10%;
+      right: 5%;
     }
   }
 }
