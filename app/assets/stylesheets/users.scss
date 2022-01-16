@@ -67,7 +67,7 @@
 }
 
 .users-list-image-wrapper {
-  background:url(assets/Viking.jpeg);
+  background-image:image-url('Viking.jpeg');
   background-size: cover;
   .users-list-image {
     background: rgba(255, 255, 255, 0.9);
@@ -78,7 +78,7 @@
 }
 
 .event-wrapper {
-  background-image: url(assets/flowers-decorating-the-centerpieces-with-luxury-cutlery-on-the-tables-of-a-wedding-hall);
+  background-image: image-url('flowers-decorating-the-centerpieces-with-luxury-cutlery-on-the-tables-of-a-wedding-hall');
   background-size: cover;
   .event-wrapper-second {
     background: rgba(255, 255, 255, 0.2);
@@ -93,13 +93,13 @@
       .event-list-item1 {
         background-color: rgb(156, 186, 241);
         .card {
-          background-image: url(assets/list-item-background.jpeg);
+          background-image: image-url('list-item-background.jpeg');
         }
       }
       .event-list-item2 {
         background-color: rgb(233, 156, 241);
         .card {
-          background-image: url(assets/list-item-background2.jpeg);
+          background-image: image-url('list-item-background2.jpeg');
         }
       }
     }
