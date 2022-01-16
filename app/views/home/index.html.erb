@@ -52,7 +52,7 @@
     <% if user_signed_in? %>
       <div class="col-4 p-4">
         <div class="card create-room-wrapper" >
-          <img src="/assets/create-room-card-image.jpeg" class="card-img-top" alt="party-image">
+          <%= image_tag("create-room-card-image.jpeg", class:"card-img-top") %>
           <div class="card-body">
             <p class="card-text">アカウント登録と詳細情報の性別を登録することでイベントを作成することができます。</p>
             <%= link_to 'イベントを作成する', new_room_path, class:"btn btn-primary"%>
