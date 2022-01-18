@@ -76,8 +76,8 @@
       <ul>
         <% @messages.each do |message| %>
           <li>
-            <p><%= message.user.nickname %>:</p>
-            <div>
+            <%= message.user.nickname %>:　<%= l message.created_at %><br>
+            <div class="my-1">
               <%= message.text %>
               <% if current_user == message.user %>
                 <%= link_to '削除', room_message_path(@room, message), method: :delete %>
@@ -95,7 +95,7 @@
               <%= f.text_field :text, class:'form-control' %>
             </div>
             <span>
-              <%= f.submit 'コメントする', class:'btn btn-secondary' %>
+              <%= f.submit 'コメントする', class:'btn btn-warning' %>
             </span>
           </div>
         <% end %>
@@ -111,7 +111,7 @@
           <ul>
             <% @goods.each do |good| %>
               <li class="my-3">
-                🌟　<%= good.text %>　：<%= l good.created_at %>
+                🌟　<%= good.text %>：　<%= l good.created_at %>
                 <%= link_to good.user.nickname, user_path(good.user), class: 'good-user-link' %>
                 <% if current_user.id == @room.create_user_id %>
                   <%= link_to 'allow', allow_room_path(@room, allowed_user_id: good.user.id), class: 'room-allow-button', value:good.user.nickname %>
