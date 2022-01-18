@@ -111,7 +111,8 @@
           <ul>
             <% @goods.each do |good| %>
               <li class="my-3">
-                🌟　<%= good.text %>　：　<%= link_to good.user.nickname, user_path(good.user) %>
+                🌟　<%= good.text %>　：<%= l good.created_at %>
+                <%= link_to good.user.nickname, user_path(good.user), class: 'good-user-link' %>
                 <% if current_user.id == @room.create_user_id %>
                   <%= link_to 'allow', allow_room_path(@room, allowed_user_id: good.user.id), class: 'room-allow-button', value:good.user.nickname %>
                 <% end %>
