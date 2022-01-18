@@ -9,3 +9,6 @@ ja:
         name: タグの内容
       room_detail:
         treat_id: Trick or Treat の欄
+  time:
+    formats:
+      default: "%Y/%m/%d %H:%M:%S"
