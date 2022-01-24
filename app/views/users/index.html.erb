@@ -12,9 +12,9 @@
                 <%= link_to user.nickname, user_path(user) %>
                 <% if user_signed_in? %>
                   <% if following = Following.find_by(following_id: user.id, user_id: current_user.id) %>
-                    <%= link_to 'follow 済', following_path(following), method: :delete, class: 'already-follow-button' %>
+                    <%= link_to 'follow 済', following_path(following), method: :delete, class: 'already-follow-button', remote: true %>
                   <% else %>
-                    <%= link_to 'follow', followings_path(following_user: user.id), method: :post, class: 'follow-button' %>
+                    <%= link_to 'follow', followings_path(following_user: user.id), method: :post, class: 'follow-button', remote: true %>
                   <% end %>
                 <% end %>
               </li>

@@ -1,0 +1,56 @@
+var usersList = document.querySelector('.users-list');
+var followingUsersList = document.querySelector('.following-users-list');
+var userShowPageFollowButton = document.getElementById("user-show-page-follow-button");
+
+if(usersList){
+  var unfollowButton = document.querySelector('a[href="/followings/<%= @following.id %>"][data-method="delete"]');
+
+  var listItem = unfollowButton.parentNode;
+
+  var removeItems = document.querySelectorAll('a[href="/followings/<%= @following.id %>"]');
+  removeItems = Array.from(removeItems);
+
+  var followButton = '<a class="follow-button" data-remote="true" rel="nofollow" data-method="post" href="/followings?following_user=<%= @following.following_id %>">follow</a>';
+
+  unfollowButton.insertAdjacentHTML('afterend', followButton);
+
+  removeItems.forEach((element)=>{
+    element.remove();
+  });
+}
+
+if(followingUsersList){
+  var unfollowButton = document.querySelector('a[href="/followings/<%= @following.id %>"][data-method="delete"]');
+
+  var listItem = unfollowButton.parentNode;
+
+  var removeItems = document.querySelectorAll('a[href="/followings/<%= @following.id %>"]');
+  removeItems = Array.from(removeItems);
+
+  var followButton = '<a class="follow-button" data-remote="true" rel="nofollow" data-method="post" href="/followings?following_user=<%= @following.following_id %>">follow</a>';
+
+  unfollowButton.insertAdjacentHTML('afterend', followButton);
+
+  removeItems.forEach((element)=>{
+    element.remove();
+  });
+
+  listItem.lastElementChild.classList.add('hidden');
+}
+
+if(userShowPageFollowButton){
+  var unfollowButton = document.querySelector('a[href="/followings/<%= @following.id %>"][data-method="delete"]');
+
+  var listItem = unfollowButton.parentNode;
+
+  var removeItems = document.querySelectorAll('a[href="/followings/<%= @following.id %>"]');
+  removeItems = Array.from(removeItems);
+
+  var followButton = '<a class="col-3 btn-primary btn me-1" data-remote="true" rel="nofollow" data-method="post" href="/followings?following_user=<%= @following.following_id %>">followする</a>';
+
+  unfollowButton.insertAdjacentHTML('afterend', followButton);
+
+  removeItems.forEach((element)=>{
+    element.remove();
+  });
+}

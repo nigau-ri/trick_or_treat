@@ -1,9 +1,10 @@
 function appearButton() {
   const removeCheckbox = document.getElementById('remove-follow');
-  const followedButton = document.querySelectorAll('.followed-button');
+  let followedButton = document.querySelectorAll('.followed-button');
   if(!removeCheckbox) return null;
 
   function buttonStatus() {
+    followedButton = document.querySelectorAll('.followed-button');
     if (removeCheckbox.checked) {
       for(let i = 0; i < followedButton.length; i++){
         let element = followedButton[i];
