@@ -1,0 +1,45 @@
+var usersList = document.querySelector('.users-list');
+var followingUsersList = document.querySelector('.following-users-list');
+var userShowPageFollowButton = document.getElementById("user-show-page-follow-button");
+
+if(usersList){
+  var followButton = document.querySelector('a[href="/followings?following_user=<%= @following.following_id %>"]');
+
+  var listItem = followButton.parentNode;
+
+  var unfollowButton = '<a class="already-follow-button" data-remote="true" rel="nofollow" data-method="delete" href="/followings/<%= @following.id %>">follow 済</a>';
+
+  var tagButton = '<a class="col-3 to-following-show-btn btn ms-3 my-1" href="/followings/<%= @following.id %>">タグをつける</a>';
+
+  followButton.insertAdjacentHTML('afterend', unfollowButton);
+  listItem.insertAdjacentHTML('afterend', tagButton);
+  followButton.remove();
+}
+
+if(followingUsersList){
+  var followButton = document.querySelector('a[href="/followings?following_user=<%= @following.following_id %>"]');
+
+  var listItem = followButton.parentNode;
+
+  var unfollowButton = '<a class="followed-button" data-remote="true" rel="nofollow" data-method="delete" href="/followings/<%= @following.id %>">followをはずす</a>';
+
+  var tagButton = '<a class="col-2 to-following-show-btn btn ms-3 my-1" href="/followings/<%= @following.id %>">タグをつける</a>';
+
+  followButton.insertAdjacentHTML('afterend', unfollowButton);
+  listItem.insertAdjacentHTML('afterend', tagButton);
+  followButton.remove();
+}
+
+if(userShowPageFollowButton){
+  var followButton = document.querySelector('a[href="/followings?following_user=<%= @following.following_id %>"]');
+
+  var listItem = followButton.parentNode;
+
+  var unfollowButton = '<a class="col-3 btn-secondary btn me-1" data-remote="true" rel="nofollow" data-method="delete" href="/followings/<%= @following.id %>">followをはずす</a>';
+
+  var tagButton = '<a class="col-3 btn-primary btn me-1" href="/followings/<%= @following.id %>">タグをつける</a>';
+
+  followButton.insertAdjacentHTML('afterend', unfollowButton);
+  listItem.insertAdjacentHTML('beforeend', tagButton);
+  followButton.remove();
+}

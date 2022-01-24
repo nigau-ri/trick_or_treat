@@ -14,17 +14,12 @@ class FollowingsController < ApplicationController
   end
 
   def create
-    following = Following.new(following_id: params[:following_user], user_id: current_user.id)
-    if following.save
-      redirect_to users_path
-    else
-      render 'users/index'
-    end
+    @following = Following.new(following_id: params[:following_user], user_id: current_user.id)
+    redirect_to root_path unless @following.save
   end
 
   def destroy
     @following.destroy
-    redirect_to users_path
   end
 
   def search

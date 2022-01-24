@@ -14,7 +14,7 @@
             <% user = User.find(following.following_id) %>
             <li class="following-user-list-item col-8"> 
               <%= link_to user.nickname, user_path(user) %>
-              <%= link_to 'followをはずす', following_path(following), method: :delete, class: 'followed-button hidden' %>
+              <%= link_to 'followをはずす', following_path(following), method: :delete, class: 'followed-button hidden', remote: true %>
               <div class="added-following-tag">
                 <% following.following_tags.each do |tag| %>
                   <div class="following-tag-item"># <%= tag.name %></div>
